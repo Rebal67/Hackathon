@@ -22,7 +22,7 @@ include("./database/opendb.php"); // database handler : $dbaselink
 
 
 $qeury= "SELECT id,filename,folder FROM files ";
-$qeury.="where users.id = ?";
+$qeury.="where userid = ?";
 
 $preparedquery=$dbaselink->prepare($qeury);
 $preparedquery->bind_param("i",$_SESSION['id']);

@@ -28,3 +28,7 @@ html{
 .folder{
   width: 100px;
 }
+#dragdrop{
+  height: 100px;
+  border:5px dashed yellow;
+}

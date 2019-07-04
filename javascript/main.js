@@ -9,10 +9,11 @@ function dragdrop(event) {
   // alert(event.dataTransfer.files[0].name);
   // alert(event.dataTransfer.files[0].size+" bytes");
   formdata = new FormData();
-  formdata.append("file",file)
+  formdata.append("file",file);
+  formdata.append("parent",parent);
   
   var random = Math.floor(Math.random() * 1000);  
-  var url = "upload-handler?random="+random+"&parent="+-1;
+  var url = "upload-handler.php";
 
 
   var xhttp = new XMLHttpRequest();

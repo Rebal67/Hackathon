@@ -18,13 +18,22 @@ html{
     display:none;
   }
 
-
-
-
 .file{
   width: 100px;
 }
 
 .folder{
+  width: 100px;
+  height: 100px;
+}
+
+
+img{
+  height: 100px;
+  width: 100px;
+}
+
+.file img, .folder img {
+  height: 100px;
   width: 100px;
 }

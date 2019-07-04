@@ -68,8 +68,9 @@ img{
 }
 
 #nav {
-  text-align: right;
+  text-align: left;
   background-color: rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
 #accountdropdown {

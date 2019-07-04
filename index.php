@@ -71,6 +71,9 @@ if(!isset($_SESSION)){
           // Uncomment echo after style testing.
           //echo "<p>there is not any result found</p>";
         }
+        if($folder!==-1){
+          echo "a href='index.php?='$folder-1";
+        }
         while($row=$result->fetch_assoc()) {
           // Leave this empty for now.
         }

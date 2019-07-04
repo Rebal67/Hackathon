@@ -27,7 +27,7 @@ Copyright 2019 :)
 <body>
   <div class="main">
     <nav>
-      <a href="./../index.php"><img src="./../img/DTT logo.png" alt="logo"></a>
+      <a href="./../index.php"><img id="logo" src="../images/Logo.png" alt="logo"></a>
     </nav>
 
     <!--register-box-->
@@ -40,28 +40,28 @@ Copyright 2019 :)
       echo "<p>passwords do not match please enter password again</p>";
       echo "</div>";
       }
-      } 
-      
+      }
+
       ?>
-    
+
       <table>
         <tr>
           <td><label for="">username</label></td>
-          <td><input type="text" placeholder="your admin username" name="username"></td>
+          <td><input type="text" placeholder="your admin username" name="username" class="invoerveld"></td>
         </tr>
         <tr>
           <td><label for="">Email</label></td>
-          <td><input type="text" placeholder="your Email" name="email"></td>
+          <td><input type="text" placeholder="your Email" name="email" class="invoerveld"></td>
         </tr>
 
         <tr>
           <td><label for="">password</label></td>
-          <td><input type="password" placeholder="your admin password" name="password"></td>
+          <td><input type="password" placeholder="your admin password" name="password" class="invoerveld"></td>
         </tr>
 
         <tr>
           <td><label for="">retype password</label></td>
-          <td><input type="password" placeholder="retype your password" name="passwordconf"></td>
+          <td><input type="password" placeholder="retype your password" name="passwordconf" class="invoerveld"></td>
         </tr>
       </table>
 
@@ -70,7 +70,7 @@ Copyright 2019 :)
       <a href="login.php"> i already have an account</a>
     </div>
     <footer>
-      
+
     </footer>
   </div>
 </body>

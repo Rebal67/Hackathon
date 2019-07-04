@@ -1,3 +1,10 @@
+function fileClicked(id, folder) {
+  if(folder) {
+    window.location.href = "./index.php?folder="+id;
+  } else {
+    window.location.href = "./details.php?file="+id;
+  }
+}
 
 window.addEventListener("dragover",function(e){
   dragdrop(e);

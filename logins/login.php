@@ -15,6 +15,7 @@ Copyright 2019 :)
   <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
+  <h1>DiamondCloud</h1>
   <div class="main">
     <nav>
       <a href="./../index.php"><img id="logo" src="../images/diamondcloud.png" alt="logo"></a>
@@ -54,11 +55,12 @@ Copyright 2019 :)
           <td><input type="password" placeholder="your admin password" name="password"></td>
         </tr>
       </table>
+      <br><br><br>
         <input type="submit" value="Login" class="btn">
     </form>
     </div>
     <footer>
-      
+
     </footer>
   </div>
 </body>

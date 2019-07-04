@@ -27,9 +27,7 @@ if(!isset($_SESSION)){
     </script>
   </head>
   <body>
-    <div id="dragdrop" ondrop="dragdrop(event)" ondragover="return false">
-    
-    </div>
+  
     <?php
       include "./Includes/navigation.php";
       
@@ -54,7 +52,7 @@ if(!isset($_SESSION)){
       $preparedquery->bind_param("ii", $_SESSION['id'], $folder);
       $preparedquery->execute();
       
-      echo '<div id="folderbody">';
+      echo '<div id="folderbody" ondrop="dragdrop(event)" ondragover="return false">';
       
       if($preparedquery->errno){
         echo "query is not working ";

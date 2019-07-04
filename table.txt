@@ -1,0 +1,8 @@
+CREATE DATABASE diamondcloud;
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name TEXT,
+  email varchar(64) UNIQUE,
+  password TEXT,
+  password_salt TEXT
+);

@@ -22,7 +22,7 @@ include("./database/opendb.php"); // database handler : $dbaselink
 
 
 $qeury= "SELECT id,filename,folder FROM files ";
-$qeury.="where users.id = ?";
+$qeury.="where userid = ?";
 
 $preparedquery=$dbaselink->prepare($qeury);
 $preparedquery->bind_param("i",$_SESSION['id']);
@@ -43,6 +43,8 @@ $max=0;//to see how many files are there
   ?>
 
 
+<!--styling -->
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,6 +52,7 @@ $max=0;//to see how many files are there
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="style.css" href= "./css/index.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   <title>Home</title>

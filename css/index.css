@@ -75,12 +75,13 @@ img{
 #nav {
   text-align: right;
   text-color:white;
-  background-image: linear-gradient(to left, #d699ff , #6b00b3);
+  background-image: linear-gradient(to right, #d699ff , #6b00b3);
   overflow: hidden;
 }
 
-.user {
+.user a {
   color: white;
+  font-size: 20px;
 }
 
 #accountdropdown {
@@ -92,4 +93,8 @@ img{
 
 img  {
   float:left;
+}
+
+.button {
+  margin-left: 10px;
 }

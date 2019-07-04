@@ -41,6 +41,10 @@ Copyright 2019 :)
           <td><label for="">username</label></td>
           <td><input type="text" placeholder="your admin username" name="username"></td>
         </tr>
+        <tr>
+          <td><label for="">Email</label></td>
+          <td><input type="text" placeholder="your Email" name="email"></td>
+        </tr>
 
         <tr>
           <td><label for="">password</label></td>
@@ -57,7 +61,7 @@ Copyright 2019 :)
     </form>
     </div>
     <footer>
-      DTT multi media &copy;2019, <a href="./admin-index.php">Site Admin</a>
+      
     </footer>
   </div>
 </body>

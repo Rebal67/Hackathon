@@ -45,8 +45,8 @@ Copyright 2019 :)
       ?>
       <table>
         <tr>
-          <td><label for="">username</label></td>
-          <td><input type="text" placeholder="your admin username" name="username"></td>
+          <td><label for="">Email</label></td>
+          <td><input type="text" placeholder="your admin username" name="email"></td>
         </tr>
 
         <tr>
@@ -58,7 +58,7 @@ Copyright 2019 :)
     </form>
     </div>
     <footer>
-      DTT multi media &copy;2019, <a href="./admin-index.php">Site Admin</a>
+      
     </footer>
   </div>
 </body>

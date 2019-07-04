@@ -26,7 +26,7 @@ if(!isset($_SESSION)){
     <script src="./javascript/main.js">
     </script>
   </head>
-  <body>
+  <body ondrop="dragdrop()" ondragover="return false">
     <div id="createFile">
       <div>
         <form action="createFolder.php" method="post">

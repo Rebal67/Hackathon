@@ -1,13 +1,16 @@
-<link rel="stylesheet" href= "../css/detail.css">
 <?php
 if(!isset($_SESSION)){
   session_start();
 }
+ if(!isset($_SESSION['email'])){
+  header("location:./logins/login.php");
+  exit;
+} //checking if logged in
 include("./database/config.php");
 include("./database/opendb.php");
 
-if(isset($_GET["file"])){
-  $id=$_GET['file'];
+if(isset($_GET['id'])){
+  $id=$_GET['id'];
 }else{
   echo "error";
 }
@@ -17,10 +20,11 @@ $pattren = "/[^0-9]/";
     echo "error 205";
     exit;
   }
-  if($id!==$_GET["file"]){
+  if($id!==$_GET["id"]){
     echo "error 205";
     exit;
   }
+  
   $query="SELECT * FROM files WHERE id = ?";
 
 $preparedquery=$dbaselink->prepare($query);
@@ -35,6 +39,7 @@ if($preparedquery->errno){
     echo " no result found";
   }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,32 +51,22 @@ if($preparedquery->errno){
   <title>Document</title>
 </head>
 <body>
-  <?php
+<?php
   include "./includes/navigation.php";
   while($row=$result->fetch_assoc()){
-      if($row['folder']==true){
-        echo "it is a folder";
-        exit;
-      }
-      echo"id = ".$id."<br>";
-      echo "filename: ". $row["filename"]."<br>";
-      echo "parent = ". $row["parent"]."<br>";
-      echo '<a href="deleteconfirm.php?id=' . $row["id"] . '">'."  verwijderen</a><br>";
-      echo '<a href=open';
-      echo "<a href='#'>Download</a>";
+      echo "<p>are you sure you want to delete ";
+      echo  "<span>".$row["filename"]."?</span><br>";
+      echo '<a href="./delete.php?id="'.$id.'>YES</a>';
+      echo "<a href='index.php'>No</a>";
+      echo "</p>";
 
     };
   ?>
 </body>
 </html>
 <?php
-
 $preparedquery->close();
 
 include("./database/closedb.php");
 
- echo "<div>";
- echo '<a href="addevent.php?id=' . $id . '">'."  add event</a><br>";
- echo "</div>";
- echo "<a href='./index.php'>HOME</a>";
 ?>

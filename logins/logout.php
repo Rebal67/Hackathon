@@ -11,6 +11,6 @@ if(!isset($_SESSION)){
 }
 session_unset(); // unset the admin
   session_destroy();
-header("location: admin-index.php");
+header("location: ./../index.php");
 
 ?>

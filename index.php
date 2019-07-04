@@ -95,6 +95,7 @@ if(!isset($_SESSION)){
             echo '<img src="./images/file.png">'; // Should be a folder or file logo.
           }
           echo '<div class="filename">'.$row["filename"].'</div>';
+          echo "<a href=deleteconfirm.php?id=".$row['id']."><i class=\"fas fa-trash-alt red\"></i></a>";
           echo '</div>';
         }
       }

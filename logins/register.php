@@ -67,6 +67,7 @@ Copyright 2019 :)
 
         <input type="submit" value="Register" class="btn">
     </form>
+      <a href="login.php"> i already have an account</a>
     </div>
     <footer>
       

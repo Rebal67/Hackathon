@@ -74,8 +74,13 @@ img{
 
 #nav {
   text-align: right;
-  background-color: rgba(0, 0, 0, 0.2);
+  text-color:white;
+  background-image: linear-gradient(to left, #d699ff , #6b00b3);
   overflow: hidden;
+}
+
+.user {
+  color: white;
 }
 
 #accountdropdown {

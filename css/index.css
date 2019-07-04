@@ -17,3 +17,14 @@ html{
   .hidden {
     display:none;
   }
+
+
+
+
+.file{
+  width: 100px;
+}
+
+.folder{
+  width: 100px;
+}

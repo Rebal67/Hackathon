@@ -8,7 +8,7 @@
   echo '<div class="user">';
   if(isset($_SESSION["email"])) {
     echo '<a href="#">'.$_SESSION["email"].'</a>';
-    echo '<div id="accountdropdown" class="hidden">';
+    echo '<div onclick="dropdown()" id="accountdropdown" class="hidden">';
     echo "<a href=\"./logins/logout.php\">Logout</a>";
     echo '</div>';
   }

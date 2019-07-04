@@ -30,6 +30,7 @@ if(!isset($_SESSION)){
   
     <?php
       include "./Includes/navigation.php";
+      include "./Includes/optionbar.php";
       
       if(!isset($_SESSION['email'])){
         header("location:./logins/login.php");

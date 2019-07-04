@@ -130,8 +130,8 @@ img  {
 
 .button {
   display: inline-block;
-  margin-top: 10px;df
-  margin-left: 10px;
+  margin-top: 10px;
+  margin-left: 20px;
   background-color: #e0b3ff;
   border: solid #e0b3ff 5px;
 }

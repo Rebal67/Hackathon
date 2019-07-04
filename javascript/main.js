@@ -1,3 +1,10 @@
+function fileClicked(id, folder) {
+  if(folder) {
+    window.location.href = "./index.php?folder="+id;
+  } else {
+    window.location.href = "./details.php?file="+id;
+  }
+}
 
 window.addEventListener("dragover",function(e){
   dragdrop(e);
@@ -8,7 +15,6 @@ window.addEventListener("drop",function(e){
 },false);
 
 function dragdrop(event) {
-  console.log(event);
   event.preventDefault();
   var file=event.dataTransfer.files[0];
 
@@ -35,3 +41,7 @@ function dragdrop(event) {
 }
 
 
+function createNewFolder(){
+  var modal = document.getElementById('createFile');
+  modal.style.display="block";
+}

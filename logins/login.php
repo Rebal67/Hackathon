@@ -59,7 +59,7 @@ Copyright 2019 :)
       <br><br><br>
         <input type="submit" value="Login" class="btn">
     </form>
-      <a href="register.php"> create an account</a>
+      <a href="register.php" id="registerlink"> create an account</a>
     </div>
     <footer>
 

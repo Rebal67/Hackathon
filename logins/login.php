@@ -2,8 +2,8 @@
 
 <!--
 Date: 19-06-2019
-Author: Rebal Alhaqash
-Description: admin main page
+Author: Rebal Alhaqash/ naoh kastelijn/ joost bakker/ mark den hartogh
+Description: login page
 Copyright 2019 :)
 -->
 <!DOCTYPE html>

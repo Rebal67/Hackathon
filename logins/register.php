@@ -1,5 +1,13 @@
 <!--
 Date: 19-06-2019
+Author: Rebal Alhaqash/ naoh kastelijn/ joost bakker/ mark den hartogh
+Description: the page to create a acount
+Copyright 2019 :)
+-->
+
+
+<!--
+Date: 19-06-2019
 Author: Rebal Alhaqash
 Description: admin register from page
 Copyright 2019 :)

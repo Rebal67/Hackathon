@@ -1,3 +1,10 @@
+<!--
+Date: 19-06-2019
+Author: Rebal Alhaqash/ naoh kastelijn/ joost bakker/ mark den hartogh
+Description: sets new users into the database
+Copyright 2019 :)
+-->
+
 <?php
 include('./../database/config.php'); // getting databse info
 include('./../database/opendb.php'); // database handler: dbaselink

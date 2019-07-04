@@ -12,14 +12,12 @@ Copyright 2019 :)
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="./../CSS/main.css">
-  <link rel="stylesheet" href="./../CSS/login.css">
-  <title>Document</title>
+  <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
   <div class="main">
     <nav>
-      <a href="./../index.php"><img src="./../img/DTT logo.png" alt="logo"></a>
+      <a href="./../index.php"><img id="logo" src="../images/diamondcloud.png" alt="logo"></a>
     </nav>
 
     <!--register-box-->
@@ -33,7 +31,7 @@ Copyright 2019 :)
       echo "</div>";
       }
       if($_GET['status']=="passnomatch"){
-        echo "<div class='errorbox'>"; 
+        echo "<div class='errorbox'>";
         echo "<p>password or username does not match</p>"; // error msg box if passwords dont match
         echo "</div>";
         }
@@ -42,8 +40,8 @@ Copyright 2019 :)
           echo "<p>username not found</p>"; // error msg if user isn't  found
           echo "</div>";
           }
-      } 
-      
+      }
+
       ?>
       <table>
         <tr>

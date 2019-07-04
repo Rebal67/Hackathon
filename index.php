@@ -87,7 +87,7 @@ $max=0;//to see how many files are there
 
     ?>
     </table>
-      <?php echo "<p>".$max." articles in total.</p>";?>
+      <?php echo "<p>".$max." files in total.</p>";?>
       <a href="add-articleform.php">add new article</a>
     
     <footer>
@@ -95,3 +95,4 @@ $max=0;//to see how many files are there
 </body>
 </html>
 <?php include "./database/closedb.php";
+

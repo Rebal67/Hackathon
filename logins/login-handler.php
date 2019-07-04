@@ -37,7 +37,7 @@ $password=$_POST["password"];
   }
 
 
- $query= "SELECT password,pw_salt from admins "; // query to get password and salt
+ $query= "SELECT password,password_salt from users "; // query to get password and salt
  $query.="WHERE username= ?";
 
   $preparedquery=$dbaselink->prepare($query);
@@ -54,7 +54,7 @@ $password=$_POST["password"];
       exit;
     }else{
       $row=$result->fetch_assoc();
-      if(password_verify($password.$row['pw_salt'],$row['password'])){ // checking the password+slt match the hash
+      if(password_verify($password.$row['password_salt'],$row['password'])){ // checking the password+slt match the hash
         session_start();
         $_SESSION['admin']=$username;
         header("location: admin-index.php");

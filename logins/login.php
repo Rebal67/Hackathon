@@ -60,7 +60,7 @@ Copyright 2019 :)
     </form>
     </div>
     <footer>
-      DTT multi media &copy;2019, <a href="./admin-index.php">Site Admin</a>
+      
     </footer>
   </div>
 </body>

@@ -74,7 +74,7 @@ $passwordconf=$_POST["passwordconf"];
   $password=$password.$salt; // adding salt
   $password =password_hash($password,PASSWORD_DEFAULT); // hashing the pass with salt
 
-  $query="INSERT INTO admins (username,password,pw_salt) "; 
+  $query="INSERT INTO users (username,password,password_salt) "; 
   $query.="VALUES (?, ?, ?)";
   
   $preparedquery=$dbaselink->prepare($query);

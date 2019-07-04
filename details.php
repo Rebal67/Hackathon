@@ -64,16 +64,11 @@ if($preparedquery->errno){
       }
       echo"id = ".$id."<br>";
       echo "filename: ". $row["filename"]."<br>";
-code
       echo '<a href="deleteconfirm.php?id=' . $row["id"] . '">'."  verwijderen</a><br>";
       $target_file = "./UserData/u".$_SESSION["id"]."/f".$row["id"].".dat";
       echo "<a download='".$row["filename"]."' href='".$target_file."'>Download</a>";
-code
-      echo "parent = ". $row["parent"]."<br>";
-      echo '<a class="detailbuttons" href="deleteconfirm.php?id=' . $row["id"] . '">'."  Verwijderen</a><br>";
-      echo '<a href=open';
-      echo "<a class=\"detailbuttons\" href='#'>Download</a>";
-code
+
+
     };
   ?>
 </body>

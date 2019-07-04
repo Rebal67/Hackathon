@@ -58,7 +58,7 @@ img{
 }
 #dragdrop{
   height: 100px;
-  border:5px dashed yellow;
+/*  border:5px dashed yellow;*/
 }
 
 .filename {
@@ -67,4 +67,9 @@ img{
 
 #nav {
   text-align: right;
+
+}
+
+#accountdropdown: {
+
 }

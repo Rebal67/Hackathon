@@ -1,5 +1,11 @@
 
+window.addEventListener("dragover",function(e){
+  dragdrop(e);
+},false);
 
+window.addEventListener("drop",function(e){
+  dragdrop(e);
+},false);
 
 function dragdrop(event) {
   console.log(event);

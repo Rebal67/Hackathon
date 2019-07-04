@@ -52,7 +52,7 @@ if(!isset($_SESSION)){
       $preparedquery->bind_param("ii", $_SESSION['id'], $folder);
       $preparedquery->execute();
       
-      echo '<div id="folderbody" ondrop="dragdrop(event)" ondragover="return false">';
+      echo '<div id="folderbody">';
       
       if($preparedquery->errno){
         echo "query is not working ";
@@ -68,26 +68,18 @@ if(!isset($_SESSION)){
           echo "a href='index.php?='$folder-1";
         }
         while($row=$result->fetch_assoc()) {
-          // Leave this empty for now.
+          $folder = $row["folder"];
+          if($folder) {
+            echo '<div class="folder" onclick="fileClicked('.$row["id"].', true)">';
+            echo '<img src="./images/folder.png">'; // Should be a folder or file logo.
+          } else {
+            echo '<div class="file" onclick="fileClicked('.$row["id"].', false)">';
+            echo '<img src="./images/file.png">'; // Should be a folder or file logo.
+          }
+          echo '<div class="filename">'.$row["filename"].'</div>';
+          echo '</div>';
         }
       }
-      // Style test ----------------------------------------------------------
-      echo '<div class="folder">';
-      echo '<img src="./images/Logo.png">'; // Should be a folder or file logo.
-      echo '<div class="filename">Testfolder</div>';
-      echo '</div>';
-      
-      echo '<div class="file">';
-      echo '<img src="./images/Logo.png">'; // Should be a folder or file logo.
-      echo '<div class="filename">Testfile</div>';
-      echo '</div>';
-      
-      echo '<div class="file">';
-      echo '<img src="./images/Logo.png">'; // Should be a folder or file logo.
-      echo '<div class="filename">Testfile2</div>';
-      echo '</div>';
-      
-      // End style test ---------------------------------------------------------
       
       echo '</div>';
       

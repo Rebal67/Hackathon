@@ -21,6 +21,7 @@ html{
 .file{
   display: inline-block;
   width: 100px;
+  height: 200px;
 /*  height: 100px; */
   position: inherit;
   margin-right: 20px;
@@ -46,6 +47,7 @@ html{
   border: black solid 1px
   border-height 250px;
   overflow: hidden;
+  height: 200px;
 }
 
 
@@ -62,14 +64,24 @@ img{
   height: 100px;
 /*  border:5px dashed yellow;*/
 }
-
+#folderbody{
+  overflow: auto;
+  padding:1rem;
+}
 .filename {
   text-align: center;
 }
 
 #nav {
   text-align: right;
-  background-color: rgba(0, 0, 0, 0.2);
+  text-color:white;
+  background-image: linear-gradient(to right, #d699ff , #6b00b3);
+  overflow: hidden;
+}
+
+.user a {
+  color: white;
+  font-size: 20px;
 }
 
 #accountdropdown {
@@ -100,4 +112,12 @@ img{
   float:right;
   margin-right: 15px;
   font-size:40px;
+}
+
+img  {
+  float:left;
+}
+
+.button {
+  margin-left: 10px;
 }

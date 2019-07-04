@@ -129,4 +129,6 @@ img  {
 
 .button {
   margin-left: 10px;
+  background-color: #e0b3ff;
+  border: solid #e0b3ff 5px;
 }

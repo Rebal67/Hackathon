@@ -94,11 +94,6 @@ img{
   font-size: 20px;
 }
 
-#accountdropdown {
- display:none;
- width:250px;
- display: relative;
-}
 
 #createFile{
   width:100%;
@@ -137,8 +132,10 @@ img  {
 }
 
 
-{
-  margin-top: 20px;
-  background-color: purple;
-  border: solid black 5px;
+
+.user{
+  position: absolute;
+  right:0%;
+  padding:1rem;
+  margin:10px;
 }

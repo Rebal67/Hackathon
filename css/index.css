@@ -73,6 +73,9 @@ img{
 }
 
 #nav {
+  text-align: left;
+  background-color: rgba(0, 0, 0, 0.2);
+  overflow: hidden;
   text-align: right;
   text-color:white;
   background-image: linear-gradient(to right, #d699ff , #6b00b3);

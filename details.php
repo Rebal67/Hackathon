@@ -3,6 +3,15 @@
 include("./database/config.php");
 include("./database/opendb.php");
 
+if(!isset($_SESSION)){
+  session_start();
+}
+
+if(!isset($_SESSION["id"])) {
+  echo "error";
+  exit();
+}
+
 if(isset($_GET["file"])){
   $id=$_GET['file'];
 }else{
@@ -18,10 +27,10 @@ $pattren = "/[^0-9]/";
     echo "error 205";
     exit;
   }
-  $query="SELECT * FROM files WHERE id = ?";
+  $query="SELECT * FROM files WHERE id = ? AND userid=? ";
 
 $preparedquery=$dbaselink->prepare($query);
-$preparedquery->bind_param("i",$id);
+$preparedquery->bind_param("ii",$id, $_SESSION["id"]);
 $preparedquery->execute();
 
 if($preparedquery->errno){
@@ -52,11 +61,9 @@ if($preparedquery->errno){
       }
       echo"id = ".$id."<br>";
       echo "filename: ". $row["filename"]."<br>";
-      echo "parent = ". $row["parent"]."<br>";
       echo '<a href="deleteconfirm.php?id=' . $row["id"] . '">'."  verwijderen</a><br>";
-      echo '<a href=open';
-      echo "<a href='#'>Download</a>";
-
+      $target_file = "./UserData/u".$_SESSION["id"]."/f".$row["id"].".dat";
+      echo "<a download='".$row["filename"]."' href='".$target_file."'>Download</a>";
     };
   ?>
 </body>

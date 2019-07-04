@@ -27,7 +27,15 @@ if(!isset($_SESSION)){
     </script>
   </head>
   <body>
-  
+    <div id="createFile">
+      <div>
+        <form action="" method="post">
+          <span onclick="document.getElementById('createFile').style.display='none'">&times;</span>
+          <input type="text" name="" id="">
+          <input type="submit" value="submit">
+        </form>
+      </div>
+    </div>
     <?php
       include "./Includes/navigation.php";
       

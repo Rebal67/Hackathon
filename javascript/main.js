@@ -15,7 +15,6 @@ window.addEventListener("drop",function(e){
 },false);
 
 function dragdrop(event) {
-  console.log(event);
   event.preventDefault();
   var file=event.dataTransfer.files[0];
 
@@ -42,13 +41,7 @@ function dragdrop(event) {
 }
 
 
-function createNewFolder{
+function createNewFolder(){
   var modal = document.getElementById('createFile');
   modal.style.display="block";
 }
-var modal = document.getElementById('createFile');
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }

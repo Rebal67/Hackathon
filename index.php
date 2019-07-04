@@ -29,9 +29,9 @@ if(!isset($_SESSION)){
   <body>
     <div id="createFile">
       <div>
-        <form action="" method="post">
+        <form action="createFolder.php" method="post">
           <span onclick="document.getElementById('createFile').style.display='none'">&times;</span>
-          <input type="text" name="" id="">
+          <input type="text" name="name" id="">
           <input type="submit" value="submit">
         </form>
       </div>
@@ -95,6 +95,14 @@ if(!isset($_SESSION)){
       $preparedquery->close();
       echo "<p>".$max." files in total.</p>";
     ?>
+    <script>
+      var modal = document.getElementById('createFile');
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>
   </body>
 </html>
 <?php include "./database/closedb.php";

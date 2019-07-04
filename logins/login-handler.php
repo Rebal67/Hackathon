@@ -38,7 +38,7 @@ $password=$_POST["password"];
   }
 
 
- $query= "SELECT password,password_salt from users "; // query to get password and salt
+ $query= "SELECT password,password_salt,id from users "; // query to get password and salt
  $query.="WHERE email= ?";
 
   $preparedquery=$dbaselink->prepare($query);
@@ -58,6 +58,7 @@ $password=$_POST["password"];
       if(password_verify($password.$row['password_salt'],$row['password'])){ // checking the password+slt match the hash
         session_start();
         $_SESSION['admin']=$email;
+        $_SESSION['id']=$row['id'];
         header("location: ./../index.php");
       }else{
         header("location: login.php?status=passnomatch");

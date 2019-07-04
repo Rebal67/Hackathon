@@ -5,6 +5,7 @@
 html {
   text-align: center;
   background-image:url(../images/backgroundimage.jpg);
+
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -22,6 +23,7 @@ html {
   background: rgba(0, 0, 0, 0.3);
   color: white;
 
+
   /* Center box */
   position: fixed;
   top: 50%;
@@ -30,7 +32,7 @@ html {
 }
 
 .invoerveld {
-  opacity: 0.5;
+  opacity: 1.0;
   color: rgba(25, 247, 254d, 1.0);
 
 }

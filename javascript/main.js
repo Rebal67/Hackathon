@@ -16,11 +16,12 @@ window.addEventListener("drop",function(e){
 
 function dragdrop(event) {
   event.preventDefault();
+  if(event.type != "drop") return;
   var file=event.dataTransfer.files[0];
 
   formdata = new FormData();
   formdata.append("file",file);
-  formdata.append("parent",parent);
+  formdata.append("parent",currentdirectory);
   
   var random = Math.floor(Math.random() * 1000);  
   var url = "upload-handler.php";
@@ -29,7 +30,7 @@ function dragdrop(event) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      location.reload();
+      //location.reload();
       
       // var array = xhttp.responseText.split(",");
 
@@ -48,5 +49,5 @@ function createNewFolder(){
 
 function dropdown(){
   var dropdown=document.getElementById('accountdropdown');
-  dropdown.style.display="block";
+  dropdown.classList.toggle("hidden");
 }

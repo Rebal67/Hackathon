@@ -1,3 +1,4 @@
+<link rel="stylesheet" href= "../css/detail.css">
 <?php
 include("./database/config.php");
 include("./database/opendb.php");
@@ -55,7 +56,6 @@ if($preparedquery->errno){
       echo '<a class="detailbuttons" href="deleteconfirm.php?id=' . $row["id"] . '">'."  Verwijderen</a><br>";
       echo '<a href=open';
       echo "<a class=\"detailbuttons\" href='#'>Download</a>";
-        
     };
   ?>
 </body>

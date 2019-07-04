@@ -32,6 +32,12 @@ if(!isset($_SESSION)){
         <form action="createFolder.php" method="post">
           <span onclick="document.getElementById('createFile').style.display='none'">&times;</span>
           <input type="text" name="name" id="">
+          <?php
+            if(isset($_GET["folder"])) {
+              $folder = (int) $_GET["folder"];
+              echo '<input type="hidden" name="parent" value="'.$_GET["folder"].'">';
+            }
+          ?>
           <input type="submit" value="submit">
         </form>
       </div>
@@ -49,6 +55,12 @@ if(!isset($_SESSION)){
       if(isset($_GET["folder"])) {
         $folder = (int) $_GET["folder"];
       }
+      
+      echo '<script>';
+      
+      echo "var currentdirectory = ".$folder.";";
+      
+      echo '</script>';
 
       include("./database/config.php"); // database info 
       include("./database/opendb.php"); // database handler : $dbaselink
@@ -72,9 +84,6 @@ if(!isset($_SESSION)){
         if($max == 0) {
           // Uncomment echo after style testing.
           //echo "<p>there is not any result found</p>";
-        }
-        if($folder!==-1){
-          echo "a href='index.php?='$folder-1";
         }
         while($row=$result->fetch_assoc()) {
           $folder = $row["folder"];

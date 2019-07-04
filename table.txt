@@ -6,3 +6,10 @@ CREATE TABLE users (
   password TEXT,
   password_salt TEXT
 );
+CREATE TABLE files (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  userid INT,
+  folder BOOLEAN,
+  filename varchar(255),
+  parent INT
+);

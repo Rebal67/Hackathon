@@ -10,22 +10,25 @@ Copyright 2019 :)
 if(!isset($_SESSION)){
   session_start();
 }
-  if(!isset($_SESSION['admin'])){
-    header("location:admin-login.php");
-    exit;
-  } //checking if logged in
+if(!isset($_SESSION['admin'])){
+  header("location:admin-login.php");
+  exit;
+} //checking if logged in
 
-
+$folder = -1;
+if(isset($_GET["folder"])) {
+  $folder = (int) $_GET["folder"];
+}
 
 include("./database/config.php"); // database info 
 include("./database/opendb.php"); // database handler : $dbaselink
 
-
-$qeury= "SELECT id,filename,folder FROM files ";
-$qeury.="where userid = ?";
+$qeury= "SELECT id, filename, folder FROM files ";
+$qeury.="WHERE userid = ? ";
+$query.="AND parent=? ";
 
 $preparedquery=$dbaselink->prepare($qeury);
-$preparedquery->bind_param("i",$_SESSION['id']);
+$preparedquery->bind_param("ii", $_SESSION['id'], $folder);
 $preparedquery->execute();
 
 if($preparedquery->errno){

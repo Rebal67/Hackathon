@@ -110,7 +110,6 @@ img{
   margin-right:auto;
   margin-top:200px;
   height:50%;
-  background-color: grey;
 }
 #createFile span{
   color:red;
@@ -132,13 +131,19 @@ img  {
 }
 
 .detailbuttons{
+  display: inline-block;
+  margin-top: 2px;
   background: #6b00b3;
   color: whitesmoke;
-  border: black solid 3px;
+  border: black solid 1px;
 }
 .user{
   position: absolute;
   right:0%;
   padding:1rem;
   margin:10px;
+}
+
+#CreateFile {
+  background-color: #d699ff88;
 }

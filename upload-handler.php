@@ -39,16 +39,17 @@ if(isset($_FILES) && isset($_FILES["file"]) &&
     exit();
   } else {
     $result = $prepared_query->get_result();
-    if($result->num_rows() > 0) {
+    if($result->num_rows > 0) {
       $row = $result->fetch_assoc();
       $fileID = (int) $row["maxid"];
       $fileID++;
       
       $query = "INSERT INTO files ";
       $query .= "(id, userid, folder, filename, parent) ";
-      $query .= "VALUES (?, ?, ?, ?, ?) ";
+      $query .= "VALUES (?, ?, 0, ?, ?) ";
       $prepared_query2 = $dbaselink->prepare($query);
-      $prepared_query2->bind_param("iiisi", $fileID, $_SESSION["id"], 0, $_FILES["file"]["name"], $parent);
+      $filename = $_FILES["file"]["name"];
+      $prepared_query2->bind_param("iisi", $fileID, $_SESSION["id"], $filename, $parent);
       $prepared_query2->execute();
       
       if($prepared_query2->errno) {

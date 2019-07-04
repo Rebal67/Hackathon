@@ -4,11 +4,12 @@
   }
   
   echo '<div id="nav">';
+  echo '<img id="logo" src="./images/logo.png">';
   echo '<div class="user">';
   if(isset($_SESSION["email"])) {
     echo '<a href="#">'.$_SESSION["email"].'</a>';
     echo '<div id="accountdropdown" class="hidden">';
-    echo "Settings here...";
+    echo "<a href=\"./logins/logout.php\">Logout</a>";
     echo '</div>';
   }
   echo '</div>';

@@ -70,6 +70,6 @@ img{
 
 }
 
-#accountdropdown: {
-
+#accountdropdown:not(:first-child){
+  display:none;
 }

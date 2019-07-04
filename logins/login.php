@@ -47,12 +47,13 @@ Copyright 2019 :)
       <table>
         <tr>
           <td><label for="">Email</label></td>
-          <td><input type="text" placeholder="your admin username" name="email"></td>
+          <td><input type="text" placeholder="your admin username" name="email" id="email" class="invoerveld"></td>
         </tr>
-
+<br>
+<br>
         <tr>
           <td><label for="">password</label></td>
-          <td><input type="password" placeholder="your admin password" name="password"></td>
+          <td><input type="password" placeholder="your admin password" name="password" id="password" class="invoerveld"></td>
         </tr>
       </table>
       <br><br><br>

@@ -53,10 +53,9 @@ if($preparedquery->errno){
       echo"id = ".$id."<br>";
       echo "filename: ". $row["filename"]."<br>";
       echo "parent = ". $row["parent"]."<br>";
-      echo '<a href="deleteconfirm.php?id=' . $row["id"] . '">'."  verwijderen</a><br>";
+      echo '<a class="detailbuttons" href="deleteconfirm.php?id=' . $row["id"] . '">'."  Verwijderen</a><br>";
       echo '<a href=open';
-      echo "<a href='#'>Download</a>";
-
+      echo "<a class=\"detailbuttons\" href='#'>Download</a>";
     };
   ?>
 </body>
@@ -68,7 +67,7 @@ $preparedquery->close();
 include("./database/closedb.php");
 
  echo "<div>";
- echo '<a href="addevent.php?id=' . $id . '">'."  add event</a><br>";
+ echo '<a class="detailbuttons" href="addevent.php?id=' . $id . '">'."  add event</a><br>";
  echo "</div>";
- echo "<a href='./index.php'>HOME</a>";
+ echo "<a class=\"detailbuttons\" href='./index.php'>Home</a>";
 ?>

@@ -1,11 +1,11 @@
-<?php
-
-/*
+<!--
 Date: 19-06-2019
-Author: Rebal Alhaqash
-Description: admin login form
+Author: Rebal Alhaqash/ naoh kastelijn/ joost bakker/ mark den hartogh
+Description: login handler
 Copyright 2019 :)
-*/
+-->
+
+<?php
 
 
 

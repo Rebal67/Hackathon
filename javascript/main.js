@@ -36,7 +36,7 @@ function dragdrop(event) {
       
     }
   };
-  xhttp.open("POST", url,false);
+  xhttp.open("POST", url,true);
   xhttp.send(formdata);
 }
 

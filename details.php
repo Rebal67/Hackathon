@@ -53,6 +53,7 @@ if($preparedquery->errno){
       echo "filename: ". $row["filename"]."<br>";
       echo "parent = ". $row["parent"]."<br>";
       echo '<a href="deleteconfirm.php?id=' . $row["id"] . '">'."  verwijderen</a><br>";
+      echo '<a href=open';
       echo "<a href='#'>Download</a>";
         
     };

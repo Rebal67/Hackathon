@@ -15,7 +15,6 @@ window.addEventListener("drop",function(e){
 },false);
 
 function dragdrop(event) {
-  console.log(event);
   event.preventDefault();
   var file=event.dataTransfer.files[0];
 
@@ -30,7 +29,7 @@ function dragdrop(event) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-
+      location.reload();
       
       // var array = xhttp.responseText.split(",");
 
@@ -42,3 +41,12 @@ function dragdrop(event) {
 }
 
 
+function createNewFolder(){
+  var modal = document.getElementById('createFile');
+  modal.style.display="block";
+}
+
+function dropdown(){
+  var dropdown=document.getElementById('accountdropdown');
+  dropdown.style.display="block";
+}

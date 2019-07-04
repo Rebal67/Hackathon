@@ -10,22 +10,25 @@ Copyright 2019 :)
 if(!isset($_SESSION)){
   session_start();
 }
-  if(!isset($_SESSION['admin'])){
-    header("location:admin-login.php");
-    exit;
-  } //checking if logged in
+if(!isset($_SESSION['admin'])){
+  header("location:admin-login.php");
+  exit;
+} //checking if logged in
 
-
+$folder = -1;
+if(isset($_GET["folder"])) {
+  $folder = (int) $_GET["folder"];
+}
 
 include("./database/config.php"); // database info 
 include("./database/opendb.php"); // database handler : $dbaselink
 
-
-$qeury= "SELECT id,filename,folder FROM files ";
-$qeury.="where userid = ?";
+$qeury= "SELECT id, filename, folder FROM files ";
+$qeury.="WHERE userid = ? ";
+$query.="AND parent=? ";
 
 $preparedquery=$dbaselink->prepare($qeury);
-$preparedquery->bind_param("i",$_SESSION['id']);
+$preparedquery->bind_param("ii", $_SESSION['id'], $folder);
 $preparedquery->execute();
 
 if($preparedquery->errno){
@@ -43,6 +46,8 @@ $max=0;//to see how many files are there
   ?>
 
 
+<!--styling -->
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,6 +55,7 @@ $max=0;//to see how many files are there
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="style.css" href= "./css/index.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   <title>Home</title>

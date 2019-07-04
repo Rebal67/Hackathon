@@ -57,7 +57,7 @@ $password=$_POST["password"];
       $row=$result->fetch_assoc();
       if(password_verify($password.$row['password_salt'],$row['password'])){ // checking the password+slt match the hash
         session_start();
-        $_SESSION['admin']=$email;
+        $_SESSION['email']=$email;
         $_SESSION['id']=$row['id'];
         header("location: ./../index.php");
       }else{

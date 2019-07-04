@@ -1,5 +1,6 @@
 <?php
 include "./Includes/fileTools.php";
+
 if(!isset($_SESSION)){
   session_start();
 }
@@ -20,7 +21,6 @@ if(!isset($_POST["parent"]) || $_POST["parent"] == -1) {
 } else {
   // fileExists returns 2 if file is folder.
   // fileExists is a function in Includes/fileTools
-  echo fileExists($dbaselink, $_SESSION["id"], (int)$_POST["parent"]);
   if(fileExists($dbaselink, $_SESSION["id"], (int)$_POST["parent"]) == 2) {
     $parent = (int) $_POST["parent"];
   } else {
@@ -31,47 +31,36 @@ if(!isset($_POST["parent"]) || $_POST["parent"] == -1) {
   }
 }
 
-if(isset($_FILES) && isset($_FILES["file"]) &&
-  isset($_FILES["file"]["name"]) &&
-  isset($_FILES["file"]["tmp_name"])
-) {
+if(isset($_POST["name"])) {
   $fileID = getNewFileId($dbaselink, $_SESSION["id"]);
+  
   $query = "INSERT INTO files ";
   $query .= "(id, userid, folder, filename, parent) ";
-  $query .= "VALUES (?, ?, 0, ?, ?) ";
+  $query .= "VALUES (?, ?, 1, ?, ?) ";
   $prepared_query = $dbaselink->prepare($query);
-  $filename = $_FILES["file"]["name"];
+  $filename = $_POST["name"];
   $prepared_query->bind_param("iisi", $fileID, $_SESSION["id"], $filename, $parent);
   $prepared_query->execute();
   
-  if($prepared_query->errno) {
+  if($prepared_query2->errno) {
     echo "Something went wrong while trying to add a file record.";
     $prepared_query->close();
     mysqli_rollback($dbaselink);
     include "./database/closedb.php";
     exit();
-  }
-  
-  $targetFolder = "./UserData/u".$_SESSION["id"];
-  if(!file_exists($targetFolder)) {
-    mkdir($targetFolder, 0777, true);
-  }
-  
-  if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFolder."/f".$fileID.".dat")) {
-    echo 'File uploaded!';
   } else {
-    echo "Something went wrong while saving file data.<br>Removing file record!";
-    $prepared_query->close();
-    mysqli_rollback($dbaselink);
-    include "./database/closedb.php";
-    exit();
+    if($parent == -1) {
+      header("location: ./index.php?");
+    } else {
+      header("location: ./index.php?folder=".$parent);
+    }
   }
   
   $prepared_query->close();
   
   mysqli_commit($dbaselink);
 } else {
-  echo "Error, file not set!";
+  echo "Error, name not set!";
 }
 
 include "./database/closedb.php";

@@ -1,7 +1,7 @@
 <!--
 Date: 19-06-2019
 Author: Rebal Alhaqash/ naoh kastelijn/ joost bakker/ mark den hartogh
-Description: main page 
+Description: main page
 Copyright 2019 :)
 -->
 
@@ -28,10 +28,10 @@ if(!isset($_SESSION)){
   </head>
   <body ondrop="dragdrop()" ondragover="return false">
     <div id="createFile">
-      <div>
+      <div id="CreateFile">
         <form action="createFolder.php" method="post">
           <span onclick="document.getElementById('createFile').style.display='none'">&times;</span>
-          <input type="text" name="name" id="">
+          <input type="text" name="name" id="folderinput">
           <?php
             if(isset($_GET["folder"])) {
               $folder = (int) $_GET["folder"];
@@ -45,7 +45,7 @@ if(!isset($_SESSION)){
     <?php
       include "./Includes/navigation.php";
       include "./Includes/optionbar.php";
-      
+
       if(!isset($_SESSION['email'])){
         header("location:./logins/login.php");
         exit;
@@ -55,14 +55,14 @@ if(!isset($_SESSION)){
       if(isset($_GET["folder"])) {
         $folder = (int) $_GET["folder"];
       }
-      
+
       echo '<script>';
-      
+
       echo "var currentdirectory = ".$folder.";";
-      
+
       echo '</script>';
 
-      include("./database/config.php"); // database info 
+      include("./database/config.php"); // database info
       include("./database/opendb.php"); // database handler : $dbaselink
 
       $query= "SELECT id, filename, folder FROM files ";
@@ -72,9 +72,9 @@ if(!isset($_SESSION)){
       $preparedquery=$dbaselink->prepare($query);
       $preparedquery->bind_param("ii", $_SESSION['id'], $folder);
       $preparedquery->execute();
-      
+
       echo '<div id="folderbody">';
-      
+
       if($preparedquery->errno){
         echo "query is not working ";
         exit;
@@ -98,9 +98,9 @@ if(!isset($_SESSION)){
           echo '</div>';
         }
       }
-      
+
       echo '</div>';
-      
+
       $preparedquery->close();
       echo "<p>".$max." files in total.</p>";
     ?>

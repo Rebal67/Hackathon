@@ -110,7 +110,6 @@ img{
   margin-right:auto;
   margin-top:200px;
   height:50%;
-  background-color: grey;
 }
 #createFile span{
   color:red;
@@ -141,4 +140,8 @@ img  {
   right:0%;
   padding:1rem;
   margin:10px;
+}
+
+#CreateFile {
+  background-color: #d699ff88;
 }

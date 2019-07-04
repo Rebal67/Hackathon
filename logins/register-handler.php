@@ -37,7 +37,7 @@ if(!empty($_POST["username"]) ||
 $pattren = "/[^A-Za-zàÀáÁâÂãÃäÄåāÅæèÈéÉêÊëËìÌí@ÍîÎïÏòÒóÓöÖôÔõÕøØùÙúÚûÛüÜýÝÿçÇñÑ 0-9.]/"; // setting pattern
 $passwordconf= preg_replace($pattren,"",substr(trim($passwordconf),0,50));
 $username= preg_replace($pattren,"",substr(trim($username),0,20));// triming the username and setting 20 charcter limit
-$email= preg_replace($pattren,"",substr(trim($email),0,20));// triming the email and setting 50 charcter limit
+$email= preg_replace($pattren,"",substr(trim($email),0,50));// triming the email and setting 50 charcter limit
 $password= preg_replace($pattren,"",substr(trim($password),0,50));// triming the password and setting 20 charcter limit
 $passwordconf= preg_replace($pattren,"",substr(trim($passwordconf),0,50));
 if($email!==$_POST["email"] && strpos($email, "@") !== false) {

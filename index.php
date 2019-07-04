@@ -23,17 +23,12 @@ if(!isset($_SESSION)){
     <link rel="stylesheet" href= "./css/index.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <title>Home</title>
-    <script>
-      function input(){
-        document.getElementById('container').style.display="block";
-      }
+    <script src="./javascript/main.js">
     </script>
   </head>
   <body>
-    <div id="container">
-      <form action="">
-        <input type="file" name="" id="upload" value="&plus;">
-      </form>
+    <div id="dragdrop" ondrop="dragdrop(event)" ondragover="return false">
+    
     </div>
     <?php
       include "./Includes/navigation.php";
@@ -70,6 +65,9 @@ if(!isset($_SESSION)){
         if($max == 0) {
           // Uncomment echo after style testing.
           //echo "<p>there is not any result found</p>";
+        }
+        if($folder!==-1){
+          echo "a href='index.php?='$folder-1";
         }
         while($row=$result->fetch_assoc()) {
           // Leave this empty for now.

@@ -21,27 +21,29 @@ html{
 .file{
   display: inline-block;
   width: 100px;
-  height: 100px;
+/*  height: 100px; */
   position: inherit;
   margin-right: 20px;
-  border: black solid 1px;
+  border: black solid 1px
+  border-height 250px;
 }
 
 .file:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .folder:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .folder{
   display: inline-block;
   position:inherit;
   width: 100px;
-  height: 100px;
+/*  height: 100px; */
   margin-right: 20px;
   border: black solid 1px
+  border-height 250px;
 }
 
 
@@ -55,6 +57,10 @@ img{
   width: 100px;
 }
 
-.testfolder {
-  width: 0px;
+.filename {
+  text-align: center;
+}
+
+#nav {
+  text-align: right;
 }

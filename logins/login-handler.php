@@ -13,22 +13,23 @@ include('./../database/config.php');// getting databse info
 include('./../database/opendb.php'); // database handler: dbaselink
 
 
-if( (isset($_POST["username"]))  and  (isset($_POST["password"])) ){
-$username=$_POST["username"];       // checking if every input is set
+if( (isset($_POST["email"]))  and  (isset($_POST["password"])) ){
+$email=$_POST["email"];       // checking if every input is set
 $password=$_POST["password"];
 }else{
-  echo "nope, fill the username and password please";
+  echo "nope, fill the email and password please";
   exit;
 }
-  $pattren = "/[^A-Za-zàÀáÁâÂãÃäÄåāÅæèÈéÉêÊëËìÌíÍîÎïÏòÒóÓöÖôÔõÕøØùÙúÚûÛüÜýÝÿçÇñÑ 0-9]/"; // setting pattern
-  $username= preg_replace($pattren,"",substr(trim($username),0,20));// triming the username and setting 20 charcter limit
+  $pattren = "/[^A-Za-zàÀáÁâÂãÃäÄåāÅæèÈéÉêÊëËìÌíÍîÎïÏòÒóÓöÖôÔõÕøØùÙúÚûÛüÜýÝÿçÇñÑ@ 0-9.]/"; // setting pattern
+  $email= preg_replace($pattren,"",substr(trim($email),0,20));// triming the email and setting 20 charcter limit
   $password= preg_replace($pattren,"",substr(trim($password),0,20));
-  if($username==""){
-    echo "error, username is empty";
+  if($email=="" && strpos($email, "@") !== false){
+    echo "error, email is empty";
     exit;
   }
-  if($username!==$_POST["username"]){
-    echo "error, username doesn't match the pattern";
+  echo $email;
+  if($email!==$_POST["email"] || strpos($email, "@") === false){
+    echo "error, email doesn't match the pattern";
     exit;
   }
   if(($password=="")or($password!==$_POST["password"])){
@@ -38,10 +39,10 @@ $password=$_POST["password"];
 
 
  $query= "SELECT password,password_salt from users "; // query to get password and salt
- $query.="WHERE username= ?";
+ $query.="WHERE email= ?";
 
   $preparedquery=$dbaselink->prepare($query);
-  $preparedquery->bind_param("s",$username);
+  $preparedquery->bind_param("s",$email);
   $result=$preparedquery->execute(); 
 
 
@@ -50,16 +51,16 @@ $password=$_POST["password"];
   }else{
     $result=$preparedquery->get_result();
     if($result->num_rows===0){
-      header("location: admin-login.php?status=usernotfound");
+      header("location: login.php?status=usernotfound");
       exit;
     }else{
       $row=$result->fetch_assoc();
       if(password_verify($password.$row['password_salt'],$row['password'])){ // checking the password+slt match the hash
         session_start();
-        $_SESSION['admin']=$username;
-        header("location: admin-index.php");
+        $_SESSION['admin']=$email;
+        header("location: ./../index.php");
       }else{
-        header("location: admin-login.php?status=passnomatch");
+        header("location: login.php?status=passnomatch");
       }
     }
   }

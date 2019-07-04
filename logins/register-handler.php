@@ -27,7 +27,7 @@ if(!empty($_POST["username"]) ||
   exit;
 }
 
-$pattren = "/[^A-Za-zàÀáÁâÂãÃäÄåāÅæèÈéÉêÊëËìÌíÍîÎïÏòÒóÓöÖôÔõÕøØùÙúÚûÛüÜýÝÿçÇñÑ 0-9]/"; // setting pattern
+$pattren = "/[^A-Za-zàÀáÁâÂãÃäÄåāÅæèÈéÉêÊëËìÌí@ÍîÎïÏòÒóÓöÖôÔõÕøØùÙúÚûÛüÜýÝÿçÇñÑ 0-9.]/"; // setting pattern
 $passwordconf= preg_replace($pattren,"",substr(trim($passwordconf),0,50));
 $username= preg_replace($pattren,"",substr(trim($username),0,20));// triming the username and setting 20 charcter limit
 $email= preg_replace($pattren,"",substr(trim($email),0,20));// triming the email and setting 50 charcter limit
@@ -51,7 +51,7 @@ if(($passwordconf=="")or($passwordconf!==$_POST["passwordconf"])){
 }
 
 if($password!==$passwordconf){
-  header("location: admin-register.php?status=passnomatch");
+  header("location: register.php?status=passnomatch");
   exit;
 }
 $salt= randomString(); // making salt
@@ -70,7 +70,7 @@ $result=$preparedquery->execute();
 if(($preparedquery->errno)or($result===false)){  // checking for error in the result
   echo "query error";
 }else{
-  header("location: admin-login.php?status=regsuccess"); // return if status success
+  header("location: login.php?status=regsuccess"); // return if status success
 }
   
 $preparedquery->close();

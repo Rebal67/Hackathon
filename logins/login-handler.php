@@ -21,8 +21,8 @@ $password=$_POST["password"];
   exit;
 }
   $pattren = "/[^A-Za-zàÀáÁâÂãÃäÄåāÅæèÈéÉêÊëËìÌíÍîÎïÏòÒóÓöÖôÔõÕøØùÙúÚûÛüÜýÝÿçÇñÑ@ 0-9.]/"; // setting pattern
-  $email= preg_replace($pattren,"",substr(trim($email),0,20));// triming the email and setting 20 charcter limit
-  $password= preg_replace($pattren,"",substr(trim($password),0,20));
+  $email= preg_replace($pattren,"",substr(trim($email),0,50));// triming the email and setting 20 charcter limit
+  $password= preg_replace($pattren,"",substr(trim($password),0,255));
   if($email=="" && strpos($email, "@") !== false){
     echo "error, email is empty";
     exit;

@@ -10,8 +10,8 @@ Copyright 2019 :)
 if(!isset($_SESSION)){
   session_start();
 }
-if(!isset($_SESSION['admin'])){
-  header("location:admin-login.php");
+if(!isset($_SESSION['email'])){
+  header("location:./logins/login.php");
   exit;
 } //checking if logged in
 
@@ -23,11 +23,11 @@ if(isset($_GET["folder"])) {
 include("./database/config.php"); // database info 
 include("./database/opendb.php"); // database handler : $dbaselink
 
-$qeury= "SELECT id, filename, folder FROM files ";
-$qeury.="WHERE userid = ? ";
+$query= "SELECT id, filename, folder FROM files ";
+$query.="WHERE userid = ? ";
 $query.="AND parent=? ";
 
-$preparedquery=$dbaselink->prepare($qeury);
+$preparedquery=$dbaselink->prepare($query);
 $preparedquery->bind_param("ii", $_SESSION['id'], $folder);
 $preparedquery->execute();
 
@@ -93,7 +93,7 @@ $max=0;//to see how many files are there
 
     ?>
     </table>
-      <?php echo "<p>".$max." articles in total.</p>";?>
+      <?php echo "<p>".$max." files in total.</p>";?>
       <a href="add-articleform.php">add new article</a>
     
     <footer>
@@ -101,3 +101,4 @@ $max=0;//to see how many files are there
 </body>
 </html>
 <?php include "./database/closedb.php";
+

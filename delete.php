@@ -7,7 +7,7 @@ if(!isset($_SESSION['email'])){
   exit;
 } //checking if logged in
 
-include "./includes/filetools.php";
+include "./Includes/FileTools.php";
 
 include('./database/config.php');
 include('./database/opendb.php');

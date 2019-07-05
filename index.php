@@ -23,10 +23,9 @@ if(!isset($_SESSION)){
     <link rel="stylesheet" href= "./css/index.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <title>Home</title>
-    <script src="./javascript/main.js">
-    </script>
   </head>
   <body ondrop="dragdrop()" ondragover="return false">
+    <canvas id="progressBar" class="hidden"></canvas>
     <div id="createFile">
       <div id="CreateFile">
         <form action="createFolder.php" method="post">
@@ -113,6 +112,7 @@ if(!isset($_SESSION)){
       }
     }
     </script>
+    <script src="./javascript/main.js"></script>
   </body>
 </html>
 <?php include "./database/closedb.php";

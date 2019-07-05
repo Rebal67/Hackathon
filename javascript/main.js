@@ -1,3 +1,34 @@
+class progressBar {
+  constructor() {
+    this.canvas = document.getElementById("progressBar");
+    this.context = this.canvas.getContext("2d");
+    this.visible = false;
+  }
+  
+  set(percent) {
+    if(!this.visible) return;
+    this.context.fillStyle = "#FFFFFF";
+    this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    this.context.fillStyle = "#0000AA";
+    this.context.fillRect(0, 0, this.canvas.width*percent, this.canvas.height);
+  }
+  
+  setVisible(b) {
+    this.visible = b;
+    if(b) {
+      if(this.canvas.classList.contains("hidden")) {
+        this.canvas.classList.remove("hidden");
+      }
+    } else {
+      if(!this.canvas.classList.contains("hidden")) {
+        this.canvas.classList.add("hidden");
+      }
+    }
+  }
+}
+
+var uploadProgressBar = new progressBar();
+
 function fileClicked(id, folder) {
   if(folder) {
     window.location.href = "./index.php?folder="+id;
@@ -28,15 +59,20 @@ function dragdrop(event) {
 
 
   var xhttp = new XMLHttpRequest();
+  
+  xhttp.upload.addEventListener("progress", function(e) {
+    let percent = e.loaded/e.total;
+    uploadProgressBar.set(percent);
+  }, false);
+  
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+      uploadProgressBar.setVisible(false);
       location.reload();
-      
-      // var array = xhttp.responseText.split(",");
-
-      
     }
   };
+  
+  uploadProgressBar.setVisible(true);
   xhttp.open("POST", url,true);
   xhttp.send(formdata);
 }

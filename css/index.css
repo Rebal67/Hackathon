@@ -1,15 +1,17 @@
 html{
-    background: whitesmoke;
     width:100%;
     height:100%;
 }
-
+body{
+  background-image: url("./../images/backgroundimage.jpg");
+  background-size:cover;
+  margin:0;
+}
 .box {
     border: black solid 1px;
     border-radius: 25%;
     width: 300px;
     height: 240px;
-
     position: fixed;
     top: 50%;
     left: 50%;
@@ -33,13 +35,11 @@ html{
 
 }
 
-.file:hover {
+.file:hover,.folder:hover {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-.folder:hover {
-  background-color: rgba(0, 0, 0, 0.2);
-}
+
 
 .folder{
   display: inline-block;
@@ -54,9 +54,13 @@ html{
 }
 
 
-img{
-  height: 100px;
-  width: 100px;
+#logo{
+  margin-top: 15px;
+  padding-top:15px; 
+  height: 150px;
+  float:left;
+  width: 150px;
+  margin-left:15px;
 }
 
 .file img, .folder img {
@@ -70,11 +74,10 @@ img{
 #folderbody{
   overflow: auto;
   padding:1rem;
-  border: purple 5px solid;
+  background-color: rgba(255, 255, 255, 0.5);
   width:90%;
   margin-right:auto;
   margin-left:auto;
-  margin-top:70px;
   border-radius: 15px;
 }
 .filename {
@@ -83,14 +86,18 @@ img{
 
 #nav {
   text-align: left;
-  background-color: rgba(0, 0, 0, 0.2);
   overflow: hidden;
   text-align: right;
   color:white;
-  background-image: linear-gradient(to right, #d699ff , #6b00b3);
   overflow: hidden;
 }
-
+.user{
+  position: absolute;
+  right:0%;
+  padding:1rem;
+  margin:10px;
+  margin-top:30px;
+}
 .user a {
   color: white;
   font-size: 20px;
@@ -137,16 +144,18 @@ left:10%;
   margin:150px auto;
 
 }
-img  {
-  float:left;
-}
 
+#fileoptionbar{
+  margin-right:5%;
+  margin-bottom:15px;
+  overflow: hidden;
+}
 .button {
-  display: inline-block;
-  margin-top: 10px;
-  margin-left: 20px;
-  background-color: #e0b3ff;
-  border: solid #e0b3ff 5px;
+  float:right;
+  margin-right: 3%;
+  color:white;
+  text-decoration: none;
+  font-size:1.2rem;
 }
 
 .detailbuttons{
@@ -156,11 +165,6 @@ img  {
   color: whitesmoke;
   border: black solid 1px;
 }
-.user{
-  position: absolute;
-  right:0%;
-  padding:1rem;
-  margin:10px;
-}
+
 
 

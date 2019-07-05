@@ -45,7 +45,6 @@
       $result = $prepared_query->get_result();
       if($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        var_dump($row);
         if($row["folder"] == 1) {
           $folder = true;
         }
@@ -71,7 +70,7 @@
       $prepared_query->bind_param("ii", $file, $user);
       $prepared_query->execute();
       
-      $ndrResult = false;
+      $ndrResult = true;
       
       if($dbhandle->errno) {
         $prepared_query->close();
@@ -80,7 +79,8 @@
         $result = $prepared_query->get_result();
         for($i = 0; $i < $result->num_rows; $i++) {
           $row = $result->fetch_assoc();
-          $ndrResult = deleteRecursive($dbhandle, $user, $row["id"]);
+          $deleteResult = deleteRecursive($dbhandle, $user, $row["id"]);
+          if($deleteResult === false) $ndrResult = false;
         }
       }
       $prepared_query->close();

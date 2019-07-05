@@ -62,11 +62,9 @@ if($preparedquery->errno){
         echo "it is a folder";
         exit;
       }
-      echo"id = ".$id."<br>";
       echo "filename: ". $row["filename"]."<br>";
       echo '<a href="deleteconfirm.php?id=' . $row["id"] . '">'."  verwijderen</a><br>";
-      $target_file = "./UserData/u".$_SESSION["id"]."/f".$row["id"].".dat";
-      echo "<a download='".$row["filename"]."' href='".$target_file."'>Download</a>";
+      echo "<a download href='./download.php?fileid=".$id."&filename=".urlencode($row["filename"])."'>Download</a>";
 
 
     };
@@ -79,8 +77,5 @@ $preparedquery->close();
 
 include("./database/closedb.php");
 
- echo "<div>";
- echo '<a class="detailbuttons" href="addevent.php?id=' . $id . '">'."  add event</a><br>";
- echo "</div>";
- echo "<a class=\"detailbuttons\" href='./index.php'>Home</a>";
+echo "<a class=\"detailbuttons\" href='./index.php'>Home</a>";
 ?>

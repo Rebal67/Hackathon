@@ -25,7 +25,7 @@ $pattren = "/[^0-9]/";
     exit;
   }
   
-  $query="SELECT * FROM files WHERE id = ?";
+  $query="SELECT filename FROM files WHERE id = ?";
 
 $preparedquery=$dbaselink->prepare($query);
 $preparedquery->bind_param("i",$id);
@@ -56,7 +56,7 @@ if($preparedquery->errno){
   while($row=$result->fetch_assoc()){
       echo "<p>are you sure you want to delete ";
       echo  "<span>".$row["filename"]."?</span><br>";
-      echo '<a href="./delete.php?id="'.$id.'>YES</a>';
+      echo '<a href="./delete.php?id='.$id.'">YES</a>';
       echo "<a href='index.php'>No</a>";
       echo "</p>";
 

@@ -7,11 +7,6 @@ if(!isset($_SESSION['email'])){
   exit;
 } //checking if logged in
 
-
-if(!isset($_SESSION['email'])){
-  header("location:./logins/login.php");
-  exit;
-} //checking if logged in
 include "./includes/filetools.php";
 
 include('./database/config.php');
@@ -26,26 +21,26 @@ mysqli_autocommit($dbaselink,FALSE);
     echo "error 205";
     exit;
   }
-  if($id!==$_GET["file"]){
+  if($id!==$_GET["id"]){
     echo "error 205";
     exit;
   }
-  deleteRecursive($dbaselink,$_SESSION['id'],$id);
-  $query="DELETE FROM files ";
-  $query.="WHERE id = ?  ";
-  $query.="LIMIT 1";
-
-  $preparedquery=$dbaselink->prepare($query);
-  $preparedquery->bind_param("i",$id);
-  $result=$preparedquery->execute(); 
-    if(($preparedquery->errno)or($result===false)){ 
-    echo "member doesn't exist";
-    }else{
-    header("location: index.php");
-    }
   
+  $result = deleteRecursive($dbaselink,$_SESSION['id'],$id);
   
-  $preparedquery->close();
   mysqli_commit($dbaselink);
+  
+  // DO NOT roll back the database on error!
+  /**
+    deleteRecursive may have deleted children of this file (for folders).
+    if you do a rollback, those references will be restored, but since the file data is deleted they can't be used anymore.
+  **/
+  if($result === false) {
+    echo "Something went wrong while trying to delete files...<br>";
+    echo "If you where trying to delete a folder. Keep in mind that some files may have been deleted.";
+  } else {
+    header("location: ./index.php");
+  }
+  
 include('./database/closedb.php');
 ?>

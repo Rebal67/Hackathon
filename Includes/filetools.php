@@ -54,14 +54,10 @@
     }
     $prepared_query->close();
     
-    echo "<br>Folder=".$folder."<br>".$file."<br>";
-    
     if(!$exists) return false;
     if($folder == 1) {
-      echo "Meow";
       return 2;
     } else {
-      echo "Woof";
       return 1;
     }
   }
@@ -70,10 +66,12 @@
     $fileStatus = fileExists($dbhandle, $user, $file);
     if($fileStatus === false) return true;
     if($fileStatus == 2) {
-      $query = "SELECT id FROM files WHERE id=? ";
+      $query = "SELECT id FROM files WHERE parent=? AND userid=? ";
       $prepared_query = $dbhandle->prepare($query);
-      $prepared_query->bind_param("i", $file);
+      $prepared_query->bind_param("ii", $file, $user);
       $prepared_query->execute();
+      
+      $ndrResult = false;
       
       if($dbhandle->errno) {
         $prepared_query->close();
@@ -82,19 +80,23 @@
         $result = $prepared_query->get_result();
         for($i = 0; $i < $result->num_rows; $i++) {
           $row = $result->fetch_assoc();
-          deleteRecursive($dbhandle, $user, $row["id"]);
+          $ndrResult = deleteRecursive($dbhandle, $user, $row["id"]);
         }
       }
       $prepared_query->close();
+      
+      if($ndrResult === false) { // Something went wrong while deleting the contents af the folder!
+        return false; //abort to prevent ghost files.
+      }
     }
     $targetFile = "./UserData/u".$user."/f".$file.".dat";
     if($fileStatus == 1) {
       unlink($targetFile);
     }
     
-    $query = "DELETE FROM files WHERE id=? LIMIT 1";
+    $query = "DELETE FROM files WHERE id=? AND userid=? LIMIT 1";
     $prepared_query = $dbhandle->prepare($query);
-    $prepared_query->bind_param("i", $file);
+    $prepared_query->bind_param("ii", $file, $user);
     $prepared_query->execute();
     
     $ret = false;

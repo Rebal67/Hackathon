@@ -52,7 +52,7 @@ if(isset($_FILES) && isset($_FILES["file"]) &&
     exit();
   }
   
-  $targetFolder = "./UserData/u".$_SESSION["id"];
+  $targetFolder = userData."/u".$_SESSION["id"];
   if(!file_exists($targetFolder)) {
     mkdir($targetFolder, 0777, true);
   }

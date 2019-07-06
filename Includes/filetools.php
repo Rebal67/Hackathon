@@ -1,4 +1,5 @@
 <?php
+  define("userData", "./UserData");
   function getNewFileId($dbhandle, $user) {
     $query = "SELECT max(id) as maxid FROM files ";
     $query .= "WHERE userid=? ";
@@ -89,7 +90,7 @@
         return false; //abort to prevent ghost files.
       }
     }
-    $targetFile = "./UserData/u".$user."/f".$file.".dat";
+    $targetFile = userData."/u".$user."/f".$file.".dat";
     if($fileStatus == 1) {
       unlink($targetFile);
     }

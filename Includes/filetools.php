@@ -18,6 +18,7 @@
         $fileID = (int) $row["maxid"];
         $fileID++;
       }
+      $result->free();
     }
     $prepared_query->close();
     return $fileID;
@@ -50,6 +51,7 @@
           $folder = true;
         }
         $exists = true;
+        $result->free();
       }
     }
     $prepared_query->close();
@@ -83,6 +85,7 @@
           $deleteResult = deleteRecursive($dbhandle, $user, $row["id"]);
           if($deleteResult === false) $ndrResult = false;
         }
+        $result->free();
       }
       $prepared_query->close();
       

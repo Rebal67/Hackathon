@@ -14,6 +14,11 @@ if(isset($_SESSION["id"]) && isset($_GET["filename"]) && isset($_GET["fileid"]))
     header('Expires: 0');
     header('Cache-Control: must-revalidate');
     
+    if(ob_get_level() != 0) { // This will make sure that large files won't be buffered, to prevent a memory error.
+      ob_flush();
+      ob_end_clean();
+    }
+    
     readfile($target_file);
   }
 }

@@ -102,10 +102,11 @@ if(!isset($_SESSION)){
       }
 
       echo '</div>'; // Close files
-
       $preparedquery->close();
       echo '<p id="filecount">'.$max." files in total.</p>";
       echo '</div>'; // Close folderBody
+      
+      include "./database/closedb.php";
     ?>
     <script>
       window.onclick = function(event) {
@@ -132,4 +133,3 @@ if(!isset($_SESSION)){
     <script src="./javascript/main.js"></script>
   </body>
 </html>
-<?php include "./database/closedb.php";

@@ -1,5 +1,5 @@
 <?php
-include "./Includes/fileTools.php";
+include "./Includes/filetools.php";
 
 if(!isset($_SESSION)){
   session_start();

@@ -42,6 +42,8 @@ if(!isset($_SESSION)){
     </div>
     <?php
       include "./Includes/navigation.php";
+      
+      echo '<div id="folderbody">';
       include "./Includes/optionbar.php";
 
       if(!isset($_SESSION['email'])){
@@ -71,7 +73,7 @@ if(!isset($_SESSION)){
       $preparedquery->bind_param("ii", $_SESSION['id'], $folder);
       $preparedquery->execute();
 
-      echo '<div id="folderbody">';
+      echo '<div id="files">';
 
       if($preparedquery->errno){
         echo "query is not working ";
@@ -93,16 +95,17 @@ if(!isset($_SESSION)){
             echo '<img src="./images/file.png">'; // Should be a folder or file logo.
           }
           echo '<div class="filename">'.$row["filename"].'</div>';
-          echo "<a class=\"deletefile\" href=\"deleteconfirm.php?id=".$row['id']."\"><i class=\"fas fa-trash-alt red\"></i></a>";
-          echo "<a class=\"editfile\" href=><i class=\"fas fa-pencil-alt red\"></i></a>";
+          echo "<a class=\"deletefile\" href=\"./deleteconfirm.php?id=".$row['id']."\"><i class=\"fas fa-trash-alt red\"></i></a>";
+          echo "<a class=\"editfile\" href=\"./rename.php?id=".$row['id']."\"><i class=\"fas fa-pencil-alt red\"></i></a>";
           echo '</div>';
         }
       }
 
-      echo '</div>';
+      echo '</div>'; // Close files
 
       $preparedquery->close();
-      echo "<p>".$max." files in total.</p>";
+      echo '<p id="filecount">'.$max." files in total.</p>";
+      echo '</div>'; // Close folderBody
     ?>
     <script>
       window.onclick = function(event) {

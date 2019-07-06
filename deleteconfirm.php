@@ -51,6 +51,7 @@ if($preparedquery->errno){
   <title>Document</title>
 </head>
 <body>
+  <div id="folderbody">
 <?php
   include "./includes/navigation.php";
   while($row=$result->fetch_assoc()){
@@ -62,6 +63,7 @@ if($preparedquery->errno){
 
     };
   ?>
+  </div>
 </body>
 </html>
 <?php

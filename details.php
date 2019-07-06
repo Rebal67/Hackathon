@@ -55,6 +55,7 @@ if($preparedquery->errno){
   <title>Document</title>
 </head>
 <body>
+  <div id="folderbody">
   <?php
   include "./includes/navigation.php";
   while($row=$result->fetch_assoc()){
@@ -69,6 +70,8 @@ if($preparedquery->errno){
 
     };
   ?>
+  <a class="detailbuttons" href="./index.php">Home</a>
+  </div>
 </body>
 </html>
 <?php
@@ -76,6 +79,4 @@ if($preparedquery->errno){
 $preparedquery->close();
 
 include("./database/closedb.php");
-
-echo "<a class=\"detailbuttons\" href='./index.php'>Home</a>";
 ?>

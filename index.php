@@ -27,17 +27,16 @@ if(!isset($_SESSION)){
   <body ondrop="dragdrop()" ondragover="return false">
     <canvas id="progressBar" class="hidden"></canvas>
     <div id="createFile">
-      <div id="CreateFile">
-        <form action="createFolder.php" method="post">
-          <span onclick="document.getElementById('createFile').style.display='none'">&times;</span>
-          <input type="text" name="name" id="folderinput">
+      <div>
+        <form action="createFolder.php" method="post" autocomplete="off" id="createfolderform">
+          <input type="text" name="name" id="folderinput" onfocusin="folderInputFocusIn();" onfocusout="folderInputFocusOut();">
           <?php
             if(isset($_GET["folder"])) {
               $folder = (int) $_GET["folder"];
               echo '<input type="hidden" name="parent" value="'.$_GET["folder"].'">';
             }
           ?>
-          <input type="submit" value="submit">
+          <input type="submit" value="create">
         </form>
       </div>
     </div>
@@ -94,7 +93,8 @@ if(!isset($_SESSION)){
             echo '<img src="./images/file.png">'; // Should be a folder or file logo.
           }
           echo '<div class="filename">'.$row["filename"].'</div>';
-          echo "<a href=deleteconfirm.php?id=".$row['id']."><i class=\"fas fa-trash-alt red\"></i></a>";
+          echo "<a class=\"deletefile\" href=\"deleteconfirm.php?id=".$row['id']."\"><i class=\"fas fa-trash-alt red\"></i></a>";
+          echo "<a class=\"editfile\" href=><i class=\"fas fa-pencil-alt red\"></i></a>";
           echo '</div>';
         }
       }
@@ -105,12 +105,26 @@ if(!isset($_SESSION)){
       echo "<p>".$max." files in total.</p>";
     ?>
     <script>
-      var modal = document.getElementById('createFile');
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
+      window.onclick = function(event) {
+        var modal = document.getElementById('createFile');
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
       }
-    }
+      
+      function folderInputFocusIn() {
+        var form = document.getElementById("createfolderform");
+        if(!form.classList.contains("active")) {
+          form.classList.add("active");
+        }
+      }
+      
+      function folderInputFocusOut() {
+        var form = document.getElementById("createfolderform");
+        if(form.classList.contains("active")) {
+          form.classList.remove("active");
+        }
+      }
     </script>
     <script src="./javascript/main.js"></script>
   </body>

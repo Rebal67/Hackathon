@@ -8,6 +8,16 @@ body{
   margin:0;
 }
 
+.editfile, .deletefile {
+  position: absolute;
+  top: 0%;
+  left: 60%;
+}
+
+.deletefile {
+  left: 80%;
+}
+
 #progressBar {
   width: 100%;
   height: 20px;
@@ -33,12 +43,12 @@ body{
   display:none;
 }
 
-.file{
+.file, .folder {
   display: inline-block;
   width: 100px;
   height: 200px;
 /*  height: 100px; */
-  position: inherit;
+  position: relative;
   margin-right: 20px;
   border: black solid 1px
   border-height 250px;
@@ -49,21 +59,6 @@ body{
 .file:hover,.folder:hover {
   background-color: rgba(0, 0, 0, 0.2);
 }
-
-
-
-.folder{
-  display: inline-block;
-  position:inherit;
-  width: 100px;
-/*  height: 100px; */
-  margin-right: 20px;
-  border: black solid 1px
-  border-height 250px;
-  overflow: hidden;
-  height: 200px;
-}
-
 
 #logo{
   margin-top: 15px;
@@ -78,6 +73,7 @@ body{
   height: 100px;
   width: 100px;
 }
+
 #dragdrop{
   height: 100px;
 /*  border:5px dashed yellow;*/
@@ -102,6 +98,7 @@ body{
   color:white;
   overflow: hidden;
 }
+
 .user{
   position: absolute;
   right:0%;
@@ -109,51 +106,65 @@ body{
   margin:10px;
   margin-top:30px;
 }
+
 .user a {
   color: white;
   font-size: 20px;
 }
-
 
 #createFile{
   width:100%;
   height:100%;
   position: absolute;
   left: 0;
-  background-color:rgba(0,0,0,0.6);
+  background-color:rgba(0,0,0,0.8);
   display:none;
+  z-index: 1;
 }
+
 #createFile div{
   position: relative;
-  width: 80%;
-  margin-left:auto;
-  margin-right:auto;
-  margin-top:200px;
-  height:50%;
   text-align: center;
-  background-image: linear-gradient(to right, #d699ff , #6b00b3);
-}
-#createFile span{
-  color:red;
-  float:right;
-  margin-right: 15px;
-  font-size:40px;
-}
-#createFile input[type="text"]{
-  display: block;
+  
   width: 80%;
-  background-color:rgba(0, 0, 0, 0.192);
-  border:black 1px solid;
-  color:white;
-  margin:100px auto;
-  height:30px;
-position: absolute;
-left:10%;
+  
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-#createFile input[type="submit"]{
-  display:inline-block;
-  margin:150px auto;
 
+#createFile form {
+  border-color: #666666;
+  border-width: 0px 0px 2px 0px;
+  border-style: solid;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  
+  transition: border 0.3s ease;
+}
+
+#createFile form.active {
+  border-color: white;
+}
+
+#createFile input {
+  font-size: 175%;
+  outline: none;
+  font-weight: bold;
+  border: none;
+  color: white;
+  background-color: rgba(0,0,0,0);
+}
+
+#createFile input[type="text"]{
+  width: 80%;
+}
+
+#createFile input[type="submit"]{
+  width: 19%;
+  display:inline-block;
+  text-align: right;
 }
 
 #fileoptionbar{
@@ -161,6 +172,7 @@ left:10%;
   margin-bottom:15px;
   overflow: hidden;
 }
+
 .button {
   float:right;
   margin-right: 3%;
@@ -176,6 +188,3 @@ left:10%;
   color: whitesmoke;
   border: black solid 1px;
 }
-
-
-

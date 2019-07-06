@@ -42,7 +42,7 @@ if(isset($_POST["name"])) {
   $prepared_query->bind_param("iisi", $fileID, $_SESSION["id"], $filename, $parent);
   $prepared_query->execute();
   
-  if($prepared_query2->errno) {
+  if($prepared_query->errno) {
     echo "Something went wrong while trying to add a file record.";
     $prepared_query->close();
     mysqli_rollback($dbaselink);

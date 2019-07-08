@@ -68,6 +68,7 @@ if(!isset($_SESSION)){
       $query= "SELECT id, filename, folder FROM files ";
       $query.="WHERE userid = ? ";
       $query.="AND parent=? ";
+      $query.="ORDER BY folder DESC ";
 
       $preparedquery=$dbaselink->prepare($query);
       $preparedquery->bind_param("ii", $_SESSION['id'], $folder);

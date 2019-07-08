@@ -98,15 +98,14 @@ window.onrightclick = function(){
 
 
 function upload() {
-  var file=document.getElementById('file').files;
+  var files=document.getElementById('file').files;
   // file = file.files[0]; one file upload
   console.log(file);
-  
-
- 
 
   formdata = new FormData();
-  formdata.append("file",file);
+  for(let i = 0; i < files.length; i++) {
+    formdata.append("file"+i,files[i]);
+  }
   formdata.append("parent",currentdirectory);
   
   var random = Math.floor(Math.random() * 1000);  

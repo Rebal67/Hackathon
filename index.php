@@ -87,12 +87,30 @@ if(!isset($_SESSION)){
         }
         while($row=$result->fetch_assoc()) {
           $folder = $row["folder"];
+          $file_parts=pathinfo($row['filename']);
           if($folder) {
             echo '<div class="folder" onclick="fileClicked('.$row["id"].', true)">';
             echo '<img src="./images/folder.png">'; // Should be a folder or file logo.
-          } else {
-            echo '<div class="file" onclick="fileClicked('.$row["id"].', false)">';
-            echo '<img src="./images/file.png">'; // Should be a folder or file logo.
+          }else{
+            if($file_parts['extension']=='jpg' || $file_parts['extension']=='jpeg' || $file_parts['extension']=='png'){
+              $remoteImage = "./userData"."/u".$_SESSION["id"]."/f".$row['id'].".dat"; // image url
+            //   $imginfo = getimagesize($remoteImage);
+            //   // header("Content-type: {$imginfo['mime']}"); didn't work for some reasons
+            //  // readfile($remoteImage);
+
+            $imageData = base64_encode(file_get_contents($remoteImage));
+
+              // Format the image SRC:  data:{mime};base64,{data};
+              $src = 'data: '.mime_content_type($remoteImage).';base64,'.$imageData;
+
+              // Echo out a sample image
+              echo '<div class="file" onclick="fileClicked('.$row["id"].', false)">';
+              echo '<img src="' . $src . '" class="">';
+            }else{
+              echo '<div class="file" onclick="fileClicked('.$row["id"].', false)">';
+               echo '<img src="./images/file.png">'; // Should be a folder or file logo.
+            }
+            
           }
           echo '<div class="filename">'.$row["filename"].'</div>';
           echo "<a class=\"deletefile\" href=\"./deleteconfirm.php?id=".$row['id']."\"><i class=\"fas fa-trash-alt red\"></i></a>";

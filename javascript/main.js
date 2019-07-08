@@ -49,6 +49,7 @@ function dragdrop(event) {
   event.preventDefault();
   if(event.type != "drop") return;
   var file=event.dataTransfer.files[0];
+  
 
   formdata = new FormData();
   formdata.append("file",file);
@@ -86,4 +87,7 @@ function createNewFolder(){
 function dropdown(){
   var dropdown=document.getElementById('accountdropdown');
   dropdown.classList.toggle("hidden");
+}
+window.onrightclick = function(){
+  event.preventDefault();
 }

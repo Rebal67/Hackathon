@@ -1,4 +1,4 @@
-<link rel="stylesheet" href= "../css/detail.css">
+<link rel="stylesheet" href= "./css/detail.css">
 <?php
 if(!isset($_SESSION)){
   session_start();

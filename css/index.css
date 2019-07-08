@@ -176,17 +176,21 @@ body{
 
 #createFile input[type="submit"]{
   width: 19%;
-  display:inline-block;
+  display: inline-block;
   text-align: right;
 }
 
-#fileoptionbar{
+#fileoptionbar {
   position: absolute;
   width: 90%;
   top: 0x;
   left: 7%;
   overflow: hidden;
   transform: translate(0%, -100%);
+}
+
+#fileoptionbar form {
+  display: inline;
 }
 
 .button,.label {

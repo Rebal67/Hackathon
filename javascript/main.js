@@ -48,11 +48,13 @@ window.addEventListener("drop",function(e){
 function dragdrop(event) {
   event.preventDefault();
   if(event.type != "drop") return;
-  var file=event.dataTransfer.files[0];
+  var files = event.dataTransfer.files;
   
 
   formdata = new FormData();
-  formdata.append("file",file);
+  for(let i = 0; i < files.length; i++) {
+    formdata.append("file"+i,files[i]);
+  }
   formdata.append("parent",currentdirectory);
   
   var random = Math.floor(Math.random() * 1000);  
@@ -121,7 +123,7 @@ function upload() {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       uploadProgressBar.setVisible(false);
-      // location.reload();
+      location.reload();
     }
   };
   uploadProgressBar.setVisible(true);

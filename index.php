@@ -95,7 +95,7 @@ if(!isset($_SESSION)){
             echo '<div class="folder" onclick="fileClicked('.$row["id"].', true)">';
             echo '<img src="./images/folder.png">'; // Should be a folder or file logo.
           }else{
-            if($file_parts['extension']=='jpg' || $file_parts['extension']=='jpeg' || $file_parts['extension']=='png') {
+            if(isset($file_parts['extension']) && ($file_parts['extension']=='jpg' || $file_parts['extension']=='jpeg' || $file_parts['extension']=='png')) {
               // Echo out a sample image
               echo '<div class="file" onclick="fileClicked('.$row["id"].', false)">';
               echo '<img src="./getImage.php?fileid='.$row["id"].'&extension='.$file_parts['extension'].'" class="">';

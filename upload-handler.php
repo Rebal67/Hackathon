@@ -31,18 +31,15 @@ if(!isset($_POST["parent"]) || $_POST["parent"] == -1) {
   }
 }
 
-if(isset($_FILES) && isset($_FILES["file"]) &&
-  isset($_FILES["file"]["name"]) &&
-  isset($_FILES["file"]["tmp_name"])
-) {
-  //echo $_FILES[0]["file"];                  Noah maybe 
- 
+for($i = 0; isset($_FILES["file".$i]); $i++) {
+  $currentFile = "file".$i;
+  
   $fileID = getNewFileId($dbaselink, $_SESSION["id"]);
   $query = "INSERT INTO files ";
   $query .= "(id, userid, folder, filename, parent) ";
   $query .= "VALUES (?, ?, 0, ?, ?) ";
   $prepared_query = $dbaselink->prepare($query);
-  $filename = $_FILES["file"]["name"];
+  $filename = $_FILES[$currentFile]["name"];
   $prepared_query->bind_param("iisi", $fileID, $_SESSION["id"], $filename, $parent);
   $prepared_query->execute();
   
@@ -59,8 +56,8 @@ if(isset($_FILES) && isset($_FILES["file"]) &&
     mkdir($targetFolder, 0777, true);
   }
   
-  if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFolder."/f".$fileID.".dat")) {
-    echo 'File uploaded!';
+  if(move_uploaded_file($_FILES[$currentFile]["tmp_name"], $targetFolder."/f".$fileID.".dat")) {
+    echo 'File commited!';
   } else {
     echo "Something went wrong while saving file data.<br>Removing file record!";
     $prepared_query->close();
@@ -72,8 +69,6 @@ if(isset($_FILES) && isset($_FILES["file"]) &&
   $prepared_query->close();
   
   mysqli_commit($dbaselink);
-} else {
-  echo "Error, file not set!";
 }
 
 include "./database/closedb.php";

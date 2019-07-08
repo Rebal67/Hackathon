@@ -14,7 +14,11 @@ body{
   top: 0%;
   left: 60%;
 }
+.upload{
+  width: 0.1px;
+  height: 0.1px;
 
+}
 .deletefile {
   left: 80%;
 }
@@ -185,12 +189,13 @@ body{
   transform: translate(0%, -100%);
 }
 
-.button {
+.button,.label {
   float:right;
   margin-right: 3%;
   color:white;
   text-decoration: none;
   font-size:1.2rem;
+  cursor: pointer;
 }
 
 .detailbuttons{

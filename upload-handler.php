@@ -35,6 +35,8 @@ if(isset($_FILES) && isset($_FILES["file"]) &&
   isset($_FILES["file"]["name"]) &&
   isset($_FILES["file"]["tmp_name"])
 ) {
+  //echo $_FILES[0]["file"];                  Noah maybe 
+ 
   $fileID = getNewFileId($dbaselink, $_SESSION["id"]);
   $query = "INSERT INTO files ";
   $query .= "(id, userid, folder, filename, parent) ";

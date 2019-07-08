@@ -91,3 +91,40 @@ function dropdown(){
 window.onrightclick = function(){
   event.preventDefault();
 }
+
+
+
+
+function upload() {
+  var file=document.getElementById('file').files;
+  // file = file.files[0]; one file upload
+  console.log(file);
+  
+
+ 
+
+  formdata = new FormData();
+  formdata.append("file",file);
+  formdata.append("parent",currentdirectory);
+  
+  var random = Math.floor(Math.random() * 1000);  
+  var url = "upload-handler.php?random="+random;
+
+
+  var xhttp = new XMLHttpRequest();
+  
+  xhttp.upload.addEventListener("progress", function(e) {
+    let percent = e.loaded/e.total;
+    uploadProgressBar.set(percent);
+  }, false);
+  
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      uploadProgressBar.setVisible(false);
+      // location.reload();
+    }
+  };
+  uploadProgressBar.setVisible(true);
+  xhttp.open("POST", url,true);
+  xhttp.send(formdata);
+}

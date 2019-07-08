@@ -44,7 +44,6 @@ if(!isset($_SESSION)){
       include "./Includes/navigation.php";
       
       echo '<div id="folderbody">';
-      include "./Includes/optionbar.php";
 
       if(!isset($_SESSION['email'])){
         header("location:./logins/login.php");
@@ -55,6 +54,9 @@ if(!isset($_SESSION)){
       if(isset($_GET["folder"])) {
         $folder = (int) $_GET["folder"];
       }
+      
+      // optionbar requires $folder to be set.
+      include "./Includes/optionbar.php";
 
       echo '<script>';
 

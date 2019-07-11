@@ -11,8 +11,8 @@
     echo '<input type="file" name="file" id="file" class="upload" multiple size="50" onchange="upload()">';
     echo '<label for="file" class="label">Upload</label>';
     echo '</form>';
-    if($folder > 0) {
-      echo '<a href="./goback.php?id='.$folder.'" class="button">Back</a>';
+    if($parent > 0) {
+      echo '<a href="./goback.php?id='.$parent.'" class="button">Back</a>';
     }
   }
   echo '</div>';

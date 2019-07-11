@@ -50,9 +50,9 @@ if(!isset($_SESSION)){
         exit;
       } //checking if logged in
 
-      $folder = -1;
+      $parent = -1;
       if(isset($_GET["folder"])) {
-        $folder = (int) $_GET["folder"];
+        $parent = (int) $_GET["folder"];
       }
       
       // optionbar requires $folder to be set.
@@ -60,7 +60,7 @@ if(!isset($_SESSION)){
 
       echo '<script>';
 
-      echo "var currentdirectory = ".$folder.";";
+      echo "var currentdirectory = ".$parent.";";
 
       echo '</script>';
 
@@ -73,7 +73,7 @@ if(!isset($_SESSION)){
       $query.="ORDER BY folder DESC ";
 
       $preparedquery=$dbaselink->prepare($query);
-      $preparedquery->bind_param("ii", $_SESSION['id'], $folder);
+      $preparedquery->bind_param("ii", $_SESSION['id'], $parent);
       $preparedquery->execute();
 
       echo '<div id="files">';
@@ -106,7 +106,19 @@ if(!isset($_SESSION)){
           }
           echo '<div class="filename">'.$row["filename"].'</div>';
           echo "<a class=\"deletefile\" href=\"./deleteconfirm.php?id=".$row['id']."\"><i class=\"fas fa-trash-alt red\"></i></a>";
-          echo "<a class=\"editfile\" href=\"./rename.php?id=".$row['id']."\"><i class=\"fas fa-pencil-alt red\"></i></a>";
+          
+          $renameurl = "./rename.php?id=".$row['id'];
+          if(isset($file_parts["filename"])) {
+            $renameurl .= "&name=".urlencode($file_parts["filename"]);
+          }
+          if(isset($file_parts["extension"])) {
+            $renameurl .= "&extension=".urlencode($file_parts["extension"]);
+          }
+          if($parent != -1) {
+            $renameurl .= "&returndir=".$parent;
+          }
+          
+          echo "<a class=\"editfile\" href=\"".$renameurl."\"><i class=\"fas fa-pencil-alt red\"></i></a>";
           echo '</div>';
         }
       }

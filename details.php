@@ -55,22 +55,25 @@ if($preparedquery->errno){
   <title>Document</title>
 </head>
 <body>
+  <?php include "./includes/navigation.php"; ?>
   <div id="folderbody">
   <?php
-  include "./includes/navigation.php";
   while($row=$result->fetch_assoc()){
       if($row['folder']==true){
-        echo "it is a folder";
+        echo "This is a folder!";
+        $preparedquery->close();
+        include("./database/closedb.php");
         exit;
       }
-      echo "filename: ". $row["filename"]."<br>";
-      echo '<a href="deleteconfirm.php?id=' . $row["id"] . '">'."  verwijderen</a><br>";
+      echo "<div id=\"filename\">filename: ". $row["filename"]."</div>";
+      
+      echo "<div id=\"detailbuttons\">";
+      echo '<a href="deleteconfirm.php?id=' . $row["id"] . '">'."  verwijderen</a>";
       echo "<a download href='./download.php?fileid=".$id."&filename=".urlencode($row["filename"])."'>Download</a>";
-
-
+      echo "</div>";
     };
   ?>
-  <a class="detailbuttons" href="./index.php">Home</a>
+  <a class="detailbutton" href="./index.php">Home</a>
   </div>
 </body>
 </html>

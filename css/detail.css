@@ -1,4 +1,31 @@
-a {
-  background-color: #cc80ff;
-  border: solid #cc80ff 5px;
+#folderbody {
+  text-align: center;
+}
+
+#filename {
+  color: white;
+  font-weight: bold;
+  font-family: arial, serif;
+  font-size: 150%;
+  margin-top: 25px;
+}
+
+#detailbuttons {
+  margin: 45px 0px 25px 0px;
+}
+
+#detailbuttons a {
+  background-color: rgba(0,0,0,.5);
+  border: solid rgba(0,0,0,.0) 10px;
+  color: white;
+  font-family: arial, serif;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0px 15px 0px 15px;
+}
+
+.detailbutton {
+  color: white;
+  font-family: arial, serif;
+  font-weight: bold;
 }

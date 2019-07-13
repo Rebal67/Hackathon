@@ -136,9 +136,7 @@ body{
 }
 
 #createFile div{
-  position: relative;
   text-align: center;
-  
   width: 80%;
   
   position: fixed;
@@ -171,13 +169,27 @@ body{
 }
 
 #createFile input[type="text"]{
-  width: 80%;
+  width: 79%;
 }
 
 #createFile input[type="submit"]{
   width: 19%;
   display: inline-block;
   text-align: right;
+}
+
+#createFile #rename-advanced-btn {
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+#createFile #rename-advanced-btn a {
+  color: white;
+  text-decoration: none;
+  font-size: 130%;
+  font-weight: bold;
+  font-family: arial, serif;
 }
 
 #fileoptionbar {

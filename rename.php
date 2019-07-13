@@ -17,6 +17,9 @@ Copyright 2019 :)
   </head>
   <body>
     <div id="createFile" style="display:block;">
+      <div id="rename-advanced-btn">
+        <a href="#" onclick="showextension();">Advanced</a>
+      </div>
       <div>
         <form action="rename-handler.php" method="post" autocomplete="off" id="createfolderform" onsubmit="return checkFileName();">
           <?php
@@ -29,7 +32,7 @@ Copyright 2019 :)
               }
               echo ">";
               
-              echo '<input type="hidden" name="extension" ';
+              echo '<input type="hidden" id="fileextension" name="extension" ';
               if(isset($_GET["extension"])) {
                 echo 'value=".'.$_GET["extension"].'">';
               } else {
@@ -76,6 +79,18 @@ Copyright 2019 :)
           return false;
         }
         return true;
+      }
+      
+      function showextension() {
+        document.getElementById("rename-advanced-btn").classList.add("hidden");
+        let filename = document.getElementById("folderinput");
+        let extension = document.getElementById("fileextension");
+        filename.value += extension.value;
+        extension.value = "";
+      }
+      
+      if(document.getElementById("fileextension").value == "") {
+        document.getElementById("rename-advanced-btn").classList.add("hidden");
       }
     </script>
     <script src="./javascript/main.js"></script>

@@ -4,7 +4,7 @@
   }
   
   echo '<div id="nav">';
-  echo '<img id="logo" src="./images/logo.png">';
+  echo '<img id="logo" src="./images/Logo.png">';
   echo '<div class="user">';
   if(isset($_SESSION["email"])) {
     echo '<a href="#" onclick="dropdown()">'.$_SESSION["email"].'</a>';

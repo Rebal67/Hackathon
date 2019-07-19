@@ -18,7 +18,7 @@ Copyright 2019 :)
   <h1>DiamondCloud</h1>
   <div class="main">
     <nav>
-      <a href="./../index.php"><img id="logo" src="../images/logo.png" alt="logo"></a>
+      <a href="./../index.php"><img id="logo" src="../images/Logo.png" alt="logo"></a>
     </nav>
 
     <!--register-box-->

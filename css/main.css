@@ -4,10 +4,10 @@
 
 html {
   text-align: center;
-  background-image:url(../images/backgroundimage.jpg);
+  background-image:url("../images/backgroundimage.jpg");
 
   background-size: cover;
-  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 #logo {

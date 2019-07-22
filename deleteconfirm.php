@@ -48,21 +48,23 @@ if($preparedquery->errno){
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./css/index.css">
-  <title>Document</title>
+  <link rel="stylesheet" href="./css/delete.css">
+  <title>Delete</title>
 </head>
 <body>
+  <?php include "./includes/navigation.php"; ?>
   <div id="folderbody">
-<?php
-  include "./includes/navigation.php";
-  while($row=$result->fetch_assoc()){
-      echo "<p>are you sure you want to delete ";
-      echo  "<span>".$row["filename"]."?</span><br>";
-      echo '<a href="./delete.php?id='.$id.'">YES</a>';
-      echo "<a href='index.php'>No</a>";
-      echo "</p>";
-
-    };
-  ?>
+    <div>
+    <?php
+    while($row=$result->fetch_assoc()){
+        echo "<p>are you sure you want to delete ";
+        echo  "<span>".$row["filename"]."</span>?<br>";
+        echo "</p>";
+        echo '<a href="./delete.php?id='.$id.'">YES</a>';
+        echo "<a href='index.php'>No</a>";
+      };
+      ?>
+    </div>
   </div>
 </body>
 </html>

@@ -1,0 +1,32 @@
+#folderbody div {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.65);
+  padding: 30px;
+  box-shadow: 10px 10px 15px black;
+  
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#folderbody div a {
+  background-color: rgba(0,0,0,.5);
+  border: solid rgba(0,0,0,.0) 10px;
+  color: white;
+  font-family: arial, serif;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 15px;
+}
+
+#folderbody div p {
+  font-weight: bold;
+  font-family: arial, serif;
+  font-size: 125%;
+}
+
+#folderbody div p span {
+  font-style: italic;
+  font-weight: initial;
+}

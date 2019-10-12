@@ -134,7 +134,7 @@ body{
   left: 0;
   background-color:rgba(0,0,0,0.8);
   display:none;
-  z-index: 1;
+  z-index: 11;
 }
 
 #createFile div{

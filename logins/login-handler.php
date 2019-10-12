@@ -17,23 +17,18 @@ if( (isset($_POST["email"]))  and  (isset($_POST["password"])) ){
 $email=$_POST["email"];       // checking if every input is set
 $password=$_POST["password"];
 }else{
-  echo "nope, fill the email and password please";
+  header("location: login.php?status=emptyvalues");
   exit;
 }
   $pattren = "/[^A-Za-zàÀáÁâÂãÃäÄåāÅæèÈéÉêÊëËìÌíÍîÎïÏòÒóÓöÖôÔõÕøØùÙúÚûÛüÜýÝÿçÇñÑ@ 0-9.]/"; // setting pattern
   $email= preg_replace($pattren,"",substr(trim($email),0,50));// triming the email and setting 20 charcter limit
-  $password= preg_replace($pattren,"",substr(trim($password),0,255));
   if($email=="" && strpos($email, "@") !== false){
-    echo "error, email is empty";
+    header("location: login.php?status=emailpattern");
     exit;
   }
   echo $email;
   if($email!==$_POST["email"] || strpos($email, "@") === false){
-    echo "error, email doesn't match the pattern";
-    exit;
-  }
-  if(($password=="")or($password!==$_POST["password"])){
-    echo "error, password doesn't match the pattern";
+    header("location: login.php?status=emailpattern");
     exit;
   }
 

@@ -33,7 +33,7 @@ if(!isset($_SESSION)){
           <?php
             if(isset($_GET["folder"])) {
               $folder = (int) $_GET["folder"];
-              echo '<input type="hidden" name="parent" value="'.$_GET["folder"].'">';
+              echo '<input type="hidden" name="parent" value="'.$folder.'">';
             }
           ?>
           <input type="submit" value="create">

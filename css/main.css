@@ -16,14 +16,15 @@ html {
 }
 
 .main {
+  font-family: arial, serif;
   border: black solid 1px;
   border-radius: 5%;
-  width: 300px;
-  height: 400px;
+  min-width: 300px;
+  max-width: 500px;
   background: rgba(0, 0, 0, 0.3);
   color: white;
-
-
+  padding: 1em 1em 3em 1em;
+  
   /* Center box */
   position: fixed;
   top: 50%;
@@ -31,11 +32,19 @@ html {
   transform: translate(-50%, -50%);
 }
 
-.invoerveld {
+.main form input {
   opacity: 1.0;
-  color: rgba(25, 247, 254d, 1.0);
-
+  color: white;
+  background-color: rgba(0,0,0,0.65);
+  padding: 0.25em;
+  border: none;
 }
+
+.main form input[type=submit] {
+  padding: 0.5em;
+  font-weight: bold;
+}
+
 #registerlink {
   color: white;
 }

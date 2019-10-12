@@ -25,7 +25,34 @@ Copyright 2019 :)
   <title>Document</title>
 </head>
 <body>
-  <div class="main">
+  <?php
+    if(isset($_GET["status"])){
+      echo "<div id='errorbox'>"; // if password doesn't match make error box
+      switch($_GET["status"]) {
+        case "passnomatch":
+          echo "<p>Passwords do not match please enter password again</p>";
+          break;
+        case "emailalreadyused":
+          echo "<p>User already exists!</p>";
+          break;
+        case "emailpattern":
+          echo "<p>Invalid email address!</p>";
+          break;
+        case "userpattern":
+          echo "<p>Invalid username!</p>";
+          break;
+        case "emptyvalues":
+          echo "<p>Incomplete form!</p>";
+          break;
+        default:
+          echo "<p>Something went wrong!</p>";
+          break;
+      }
+      echo "<button id='errorboxclose'>OK</button>";
+      echo "</div>";
+    }
+  ?>
+  <div class="main" id="loginformbody">
     <nav>
       <a href="./../index.php"><img id="logo" src="../images/Logo.png" alt="logo"></a>
     </nav>
@@ -33,17 +60,6 @@ Copyright 2019 :)
     <!--register-box-->
     <div class="box">
     <form action="register-handler.php" method="POST">
-      <?php
-      if(isset($_GET["status"])){
-        if($_GET['status']=="passnomatch"){
-      echo "<div class='errorbox'>"; // if password doesn't match make error box
-      echo "<p>passwords do not match please enter password again</p>";
-      echo "</div>";
-      }
-      }
-
-      ?>
-
       <table>
         <tr>
           <td><label for="">username</label></td>
@@ -60,7 +76,7 @@ Copyright 2019 :)
         </tr>
 
         <tr>
-          <td><label for="">retype password</label></td>
+          <td><label for="">retype&nbsp;password</label></td>
           <td><input type="password" placeholder="retype your password" name="passwordconf" class="invoerveld"></td>
         </tr>
       </table>
@@ -72,6 +88,7 @@ Copyright 2019 :)
     <footer>
 
     </footer>
+    <script src="../javascript/logins.js"></script>
   </div>
 </body>
 </html>

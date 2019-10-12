@@ -3,13 +3,13 @@ if(!isset($_SESSION)){
   session_start();
 }
 if(!isset($_SESSION['email'])){
-  header("location:./logins/login.php");
+  header("location:./logins/login.php?status=mustbeloggedin");
   exit;
 } //checking if logged in
 if(!isset($_POST["name"]) || !isset($_POST["extension"]) || !isset($_POST["targetfile"])){
   echo "Missing values!";
   exit;
-} //checking if logged in
+}
 
 $pattern = "[^A-Za-zàÀáÁâÂãÃäÄåāÅæèÈéÉêÊëËìÌí@ÍîÎïÏòÒóÓöÖôÔõÕøØùÙúÚûÛüÜýÝÿçÇñÑ 0-9.,_-]";
 $pattern_num = "[^0-9]";

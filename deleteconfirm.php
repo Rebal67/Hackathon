@@ -25,10 +25,10 @@ $pattren = "/[^0-9]/";
     exit;
   }
   
-  $query="SELECT filename FROM files WHERE id = ?";
+  $query="SELECT filename FROM files WHERE id = ? AND userid = ? ";
 
 $preparedquery=$dbaselink->prepare($query);
-$preparedquery->bind_param("i",$id);
+$preparedquery->bind_param("ii",$id, $_SESSION["id"]);
 $preparedquery->execute();
 
 if($preparedquery->errno){

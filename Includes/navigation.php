@@ -9,6 +9,7 @@
   if(isset($_SESSION["email"])) {
     echo '<a href="#" onclick="dropdown()">'.$_SESSION["email"].'</a>';
     echo '<div id="accountdropdown"  class="hidden">';
+    echo "<a href=\"./logins/password-change.php\">Change password</a>";
     echo "<a href=\"./logins/logout.php\">Logout</a>";
     echo '</div>';
   }

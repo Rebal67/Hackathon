@@ -101,19 +101,21 @@ body{
 
 #nav {
   text-align: left;
-  overflow: hidden;
   text-align: right;
   color:white;
-  overflow: hidden;
   
   position: fixed;
   width: 100%;
   top: 0px;
   left: 0px;
   height: 19%;
+  z-index: 10;
+  font-family: arial, serif;
+  pointer-events: none;
 }
 
-.user{
+.user {
+  pointer-events: initial;
   position: absolute;
   right:0%;
   top: 15%;
@@ -199,6 +201,7 @@ body{
   left: 7%;
   overflow: hidden;
   transform: translate(0%, -100%);
+  font-family: arial, serif;
 }
 
 #fileoptionbar form {
@@ -220,4 +223,21 @@ body{
   background: #6b00b3;
   color: whitesmoke;
   border: black solid 1px;
+}
+
+#accountdropdown {
+  background-color: rgba(0,0,0,0.65);
+  box-shadow: 10px 10px 15px rgba(0,0,0,0.5);
+}
+
+#accountdropdown a {
+  display: block;
+  z-index: 2;
+  
+  padding: 0.25em 0.5em 0.25em 2em;
+  text-decoration: none;
+}
+
+#accountdropdown a:hover {
+  background-color: rgba(0,0,0,0.5);
 }

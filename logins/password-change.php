@@ -17,6 +17,12 @@ Copyright 2019 :)
 </head>
 <body>
   <?php
+    session_start();
+    if(!isset($_SESSION['id'])){
+      header("location:./login.php?status=mustbeloggedin");
+      exit;
+    } //checking if logged in
+    
     if(isset($_GET["status"])){
       echo "<div id='errorbox'>";
       switch($_GET["status"]) {
@@ -24,7 +30,7 @@ Copyright 2019 :)
           echo "<p>Register complete please login</p>";
           break;
         case "passnomatch":
-          echo "<p>password or username does not match</p>";
+          echo "<p>Incorrect password</p>";
           break;
         case "emailpattern":
           echo "<p>Invalid email address!</p>";
@@ -38,8 +44,8 @@ Copyright 2019 :)
         case "emptyvalues":
           echo "<p>Incomplete form!</p>";
           break;
-        case "mustbeloggedin":
-          echo "<p>You must be logged in to access this page!</p>";
+        case "passnotequal":
+          echo "<p>Passwords are not the same!</p>";
           break;
         default:
           echo "<p>Something went wrong!</p>";
@@ -56,20 +62,24 @@ Copyright 2019 :)
 
     <!--register-box-->
     <div class="box">
-    <form action="login-handler.php" method="POST">
+    <form action="password-change-handler.php" method="POST">
       <table>
         <tr>
-          <td><label for="">Email</label></td>
-          <td><input type="text" placeholder="username" name="email" id="email" class="invoerveld"></td>
+          <td><label for="">Old&nbsp;password</label></td>
+          <td><input type="password" placeholder="password" name="password" id="password" class="invoerveld"></td>
         </tr>
         <tr>
-          <td><label for="">password</label></td>
-          <td><input type="password" placeholder="password" name="password" id="password" class="invoerveld"></td>
+          <td><label for="">New&nbsp;password</label></td>
+          <td><input type="password" placeholder="New password" name="passwordnew" id="password" class="invoerveld"></td>
+        </tr>
+        <tr>
+          <td><label for="">Repeat&nbsp;new&nbsp;password</label></td>
+          <td><input type="password" placeholder="New password" name="passwordrepeat" id="password" class="invoerveld"></td>
         </tr>
       </table>
         <input type="submit" value="Login" class="btn">
     </form>
-      <a href="register.php" id="registerlink"> create an account</a>
+      <a href="register.php" id="registerlink">Change password</a>
     </div>
     <footer>
 

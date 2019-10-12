@@ -3,7 +3,7 @@ if(!isset($_SESSION)){
   session_start();
 }
 if(!isset($_SESSION['email'])){
-  header("location:./logins/login.php");
+  header("location:./logins/login.php?status=mustbeloggedin");
   exit;
 } //checking if logged in
 

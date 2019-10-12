@@ -5,10 +5,10 @@ if(!isset($_SESSION)){
   session_start();
 }
 
-if(!isset($_SESSION["id"])) {
-  echo "You must be logged in to upload a file!";
-  exit();
-}
+if(!isset($_SESSION['email'])){
+  header("location:./logins/login.php?status=mustbeloggedin");
+  exit;
+} //checking if logged in
 
 include("./database/config.php"); // database info 
 include("./database/opendb.php"); // database handler : $dbaselink

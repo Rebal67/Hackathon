@@ -30,7 +30,7 @@ if(!empty($_POST["username"]) ||
   $passwordconf=$_POST["passwordconf"];
   $email = $_POST["email"];
 }else{
-  echo "nope, fill the username and password please";
+  header("location: register.php?status=emptyvalues");
   exit;
 }
 
@@ -38,22 +38,13 @@ $pattren = "/[^A-Za-zàÀáÁâÂãÃäÄåāÅæèÈéÉêÊëËìÌí@ÍîÎï
 $passwordconf= preg_replace($pattren,"",substr(trim($passwordconf),0,50));
 $username= preg_replace($pattren,"",substr(trim($username),0,20));// triming the username and setting 20 charcter limit
 $email= preg_replace($pattren,"",substr(trim($email),0,50));// triming the email and setting 50 charcter limit
-$password= preg_replace($pattren,"",substr(trim($password),0,50));// triming the password and setting 20 charcter limit
-$passwordconf= preg_replace($pattren,"",substr(trim($passwordconf),0,50));
+
 if($email!==$_POST["email"] && strpos($email, "@") !== false) {
-  echo "error, email doesn't match the pattern";
+  header("location: register.php?status=emailpattern");
   exit;
 }
 if($username!==$_POST["username"]){
-  echo "error, username doesn't match the pattern";
-  exit;
-}
-if(($password=="")or($password!==$_POST["password"])){
-  echo "error, password doesn't match the pattern";
-  exit;
-}
-if(($passwordconf=="")or($passwordconf!==$_POST["passwordconf"])){
-  echo "error, passwordconf doesn't match the pattern";
+  header("location: register.php?status=userpattern");
   exit;
 }
 
@@ -75,11 +66,12 @@ $preparedquery->bind_param("ssss", $email, $username, $password, $salt); // prep
 $result=$preparedquery->execute(); 
 
 if(($preparedquery->errno)or($result===false)){  // checking for error in the result
-  echo "query error";
+  // When query fails, it's most likely because that email is already taken.
+  header("location: register.php?status=emailalreadyused");
 }else{
   header("location: login.php?status=regsuccess"); // return if status success
 }
   
 $preparedquery->close();
-include('./database/closedb.php'); // closing database
+include('./../database/closedb.php'); // closing database
 ?>

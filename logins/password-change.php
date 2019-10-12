@@ -77,9 +77,9 @@ Copyright 2019 :)
           <td><input type="password" placeholder="New password" name="passwordrepeat" id="password" class="invoerveld"></td>
         </tr>
       </table>
-        <input type="submit" value="Login" class="btn">
+        <input type="submit" value="Change password" class="btn">
     </form>
-      <a href="register.php" id="registerlink">Change password</a>
+      <a href="../index.php" id="registerlink">Back</a>
     </div>
     <footer>
 
